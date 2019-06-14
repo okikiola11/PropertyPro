@@ -8,7 +8,7 @@
     <meta name="description" content="PropertyPro Lite" />
     <meta name="keywords" content="PropertyPro Lite" />
     <meta name="author" content="Apelehin Okikiola" />
-    <title>PropertyPro Lite:: Signup </title>
+    <title>PropertyPro Lite:: Login </title>
     <link rel="stylesheet" href="asset/css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Adamina&display=swap" rel="stylesheet">
 
@@ -28,53 +28,31 @@
         </nav>
     </header>
 
-    <div class="signup-container">
-        <div class="first-qtr">
-            <div class="first-qtr__banner">
-                <div class="first-qtr__text">Sign up</div>
-            </div>
-        </div>
-        <div class="second-qtr">
-            <form action="">
-                <div>
-                    <label for="">FirstName</label>
-                    <input type="text" name="firstname" id="inputbx">
-                </div>
-                <div>
-                    <label for="">LastName</label>
-                    <input type="text" name="lastname" id="inputbx">
-                </div>
+    <div class="login-container">
+        <div class="login-wrapper">
+            <form>
                 <div>
                     <label for="">Email</label>
-                    <input type="text" name="email" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Password</label>
-                    <input type="text" name="password" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Confirm Password</label>
-                    <input type="text" name="cpassword" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Phone Number</label>
-                    <input type="text" name="phonenumber" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Address</label>
-                    <input type="text" name="firstname" id="inputbx">
+                    <input type="text" class="email" name="email" id="inputbx" />
                 </div>
 
-                <div class="mv-sign">
+                <div>
+                    <label for="">Password</label>
+                    <input type="text" class="password" name="password" id="inputbx" />
+                </div>
+
+                <div class="mv-signl">
                     <div class="signup-btn">
-                        <a href="login.html" class="btn-submit"> Submit </a>
+                        <a href="user-dashboard.html" class="btn-submit"> Submit </a>
                     </div>
                     <div class="signup-btn-lg">
-                        Already have an account <span><a href="login.html">Login</a></span>
+                        Already have an account <span><a href="signup.html">Signup</a></span>
                     </div>
                 </div>
+
             </form>
         </div>
+        <div class="clearfix"></div>
     </div>
 
     <footer>
@@ -83,6 +61,7 @@
             <div class="footer-txt2"> All Rights Reserved &copy; 2019 </div>
         </div>
     </footer>
+
 </body>
 
 </html>
