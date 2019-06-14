@@ -248,6 +248,99 @@ header nav ul li a:hover {
     clear: both;
 }
 
+/***
+SIGNUP PAGE
+ ****/
+.signup-container {
+    margin-top: -5px;
+    display: flex;
+}
+
+.first-qtr {
+    width: 36vw;
+}
+
+.first-qtr__banner {
+    background-image: url(../images/signup.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 600px;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.first-qtr__text {
+    font-size: 2.9rem;
+    color: #ffffff;
+    font-family: 'Adamina', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-qtr {
+    padding: 35px 150px;
+    width: 63vw;
+    border-top: 1px solid #808080;
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.second-qtr div {
+    padding: 5px;
+    color: #808080;
+}
+
+#inputbx {
+    padding: 0.9rem 0.8rem;
+    font-size: 1.2rem;
+    outline: none;
+    outline-style: none;
+    color: #333333;
+    letter-spacing: 1px;
+    margin: 0.3em;
+    width: 100%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #838383;
+}
+
+.signup-btn {
+    margin-top: 15px;
+}
+
+.btn-submit {
+    background: rgb(30, 30, 30);
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-submit:hover {
+    text-decoration: none;
+}
+
+.mv-sign {
+    display: flex;
+}
+
+.signup-btn-lg {
+    margin-top: 15px;
+}
+
+.signup-btn-lg span a {
+    text-decoration: none;
+    color: #979797;
+}
+
+.signup-btn-lg span a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
 .footer {
     padding: 30px;
     text-align: center;
