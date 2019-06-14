@@ -170,10 +170,12 @@ header nav ul li a:hover {
 .brd-line {
     border-right: 1px solid #808080;
     padding-left: 5px;
+    padding-right: 2px;
+    margin-right: 5px;
 }
 
 .brd-line:last-child {
-    border-right: none;
+    border-right: none !important;
 }
 
 .container__inner--price {
