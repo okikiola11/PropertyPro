@@ -203,7 +203,7 @@ header nav ul li a:hover {
 
 .btn-view {
     background: rgb(30, 30, 30);
-    padding: 10px;
+    padding: 10px 15px;
     width: 20%;
     font-size: 1.3rem;
     font-family: 'Arial';
@@ -270,7 +270,7 @@ SIGNUP PAGE
 }
 
 .first-qtr__text {
-    font-size: 2.9rem;
+    font-size: 3rem;
     color: #ffffff;
     font-family: 'Adamina', serif;
     display: flex;
@@ -327,18 +327,64 @@ SIGNUP PAGE
     display: flex;
 }
 
+.mv-signl {
+    display: flex;
+    font-size: 1.6rem;
+}
+
 .signup-btn-lg {
     margin-top: 15px;
+    color: #808080;
 }
 
 .signup-btn-lg span a {
     text-decoration: none;
-    color: #979797;
+    color: rgb(30, 30, 30);
+    font-weight: 500;
 }
 
 .signup-btn-lg span a:hover {
-    text-decoration: none;
-    color: #000000;
+    text-decoration: underline;
+}
+
+.sp-price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Adamina', serif;
+    padding-right: 2px;
+}
+
+/*****
+LOGIN PAGE
+****/
+.login-container {
+    border-top: 1px solid #979797;
+    margin-top: -5px;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.login-wrapper form {
+    padding: 60px;
+    width: 500px;
+    margin: 20px auto;
+    background: #f9fbfd;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.login-wrapper form div {
+    padding: 10px;
+}
+
+.login-wrapper form label {
+    font-size: 2rem;
 }
 
 .footer {
