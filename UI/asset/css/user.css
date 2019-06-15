@@ -33,11 +33,18 @@ header {
 
 /* logo in header(mobile version) and side-nav (tablet & desktop) */
 .logo {
-    height: 44px;
+    /* height: 44px; */
     padding-top: 7px;
-    padding-left: 10px;
-    font-weight: 600;
-    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.logo div i {
+    font-size: 5.5rem;
+    color: #808080;
+}
+
+.logo span {
+    font-size: 1.25rem;
 }
 
 .nav-trigger {
@@ -298,6 +305,12 @@ footer {
         position: fixed;
     }
 
+    .logo div i {
+        font-size: 5.5rem;
+        padding-left: 50px;
+        color: #808080;
+    }
+
     .register-container-a {
         margin: 20px 1px 80px 100px;
         width: 50%;
@@ -314,6 +327,10 @@ footer {
 
     .side-nav ul li a i {
         font-size: 2.6rem;
+    }
+
+    .logo span {
+        padding-left: 25px;
     }
 
     .main-content {
@@ -337,6 +354,17 @@ footer {
 
     .side-nav ul li {
         font-size: 1.7rem;
+    }
+
+    .logo div i {
+        font-size: 5.5rem;
+        padding-left: 50px;
+        color: #808080;
+    }
+
+    .logo span {
+        font-size: 1.7rem;
+        padding-left: 25px;
     }
 
     .main-content {
