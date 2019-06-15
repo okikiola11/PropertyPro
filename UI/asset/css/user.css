@@ -158,6 +158,11 @@ span:after {
     text-transform: uppercase;
 }
 
+.logo span a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .main-content {
     padding-top: 44px;
     background: #dfe6e9;
@@ -192,6 +197,11 @@ span:after {
 .container-inner__i {
     padding: 35px 1px;
     text-align: center;
+}
+
+.container-inner__i a {
+    text-decoration: none;
+    color: rgb(30, 30, 30);
 }
 
 .container-inner__i span i {
