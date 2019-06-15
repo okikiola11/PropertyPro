@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Adamina&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -370,7 +372,7 @@ LOGIN PAGE
 }
 
 .login-wrapper form {
-    padding: 60px;
+    padding: 40px;
     width: 500px;
     margin: 20px auto;
     background: #f9fbfd;
