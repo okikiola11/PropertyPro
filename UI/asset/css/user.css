@@ -186,6 +186,13 @@ span:after {
     border-radius: 2px;
 }
 
+.main-content__wrapper-listin {
+    background: #ffffff;
+    width: 88%;
+    padding: 20px;
+    border-radius: 2px;
+}
+
 .container-inner {
     border: 1px solid #dfe6e9;
     border-radius: 4px;
@@ -318,6 +325,71 @@ footer {
     justify-content: center;
 }
 
+/****
+*****
+MY LISTING  */
+.main-content__listin {
+    background-color: #f5f6fa;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+}
+
+.main-content__lintin-wrapper {
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .8);
+    border: none;
+    width: 100%;
+    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
+}
+
+.main-content__listin-ppt {
+    padding-right: 3.5rem;
+}
+
+.main-content__listin-ppt img {
+    width: 350px;
+}
+
+.main-content__listin-ppt:last-child {
+    padding-right: 0;
+}
+
+.main-content__listing-hdr {
+    font-size: 2.2rem;
+    color: #0497df;
+}
+
+.main-content__listing-detls {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.main-content__listing-pr {
+    margin-top: 10px;
+    font-size: 1.7rem;
+}
+
+.main-content__listin-icons {
+    font-size: 2.5rem;
+}
+
+.list-icons__sp {
+    padding-right: 12px;
+}
+
+.list-icons__sp i {
+    color: #0497df;
+}
+
+.list-icons__sp:hover {
+    cursor: pointer;
+}
+
+/*****
+****
+MEDIA QUERIES  */
 @media screen and (min-width: 600px) {
     .side-nav {
         display: block;
@@ -383,6 +455,14 @@ footer {
     .container-inner {
         width: 50%;
     }
+
+    .main-content__lintin-wrapper {
+        /* display: flex; */
+    }
+
+    .main-content__listin-icons {
+        padding-left: 3rem;
+    }
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1199px) {
@@ -433,6 +513,14 @@ footer {
         margin-left: 2rem;
         width: 600px;
     }
+
+    .main-content__lintin-wrapper {
+        display: flex;
+    }
+
+    .main-content__listin-icons {
+        padding-left: 3rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -472,5 +560,13 @@ footer {
     .main-content__wrapper .main-content__form {
         margin-left: 13rem;
         width: 650px;
+    }
+
+    .main-content__lintin-wrapper {
+        display: flex;
+    }
+
+    .main-content__listin-icons {
+        padding-left: 3rem;
     }
 }

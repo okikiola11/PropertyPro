@@ -417,6 +417,8 @@ LOGIN PAGE
     font-size: 2rem;
 }
 
+/***
+FOOTER  */
 .footer {
     padding: 30px;
     text-align: center;
@@ -435,6 +437,9 @@ LOGIN PAGE
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/****
+****
+MEDIA QUERIES  */
 @media screen and (max-width: 600px) {
     .banner .search-container input[type=text] {
         width: 250px;
