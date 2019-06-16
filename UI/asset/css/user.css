@@ -388,6 +388,18 @@ MY LISTING  */
 }
 
 /*****
+******
+UPDATE PROPERTY ADVERT  */
+.main-content__form-txt {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-family: 'Adamina', serif;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/*****
 ****
 MEDIA QUERIES  */
 @media screen and (min-width: 600px) {
