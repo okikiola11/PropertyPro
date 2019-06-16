@@ -171,6 +171,14 @@ span:after {
     padding-bottom: 40px;
 }
 
+.main-content__cc {
+    padding-top: 44px;
+    background: #dfe6e9;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
 .main-content__wrapper {
     background: #ffffff;
     width: 88%;
@@ -239,6 +247,76 @@ footer {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/***********
+***********
+ POST A PROPERTY *****************/
+.main-content__form {
+    background-color: #f5f6fa;
+    padding: 50px;
+}
+
+.main-content__form .form__group:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.main-content__form .form__input {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .8);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
+}
+
+.main-content__form .form__input {
+    width: 100%;
+}
+
+.main-content__form .form__input::-webkit-input-placeholder {
+    color: #999999;
+}
+
+.main-content__form .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgb(30, 30, 30, .1);
+    border-bottom: 3px solid #cccccc;
+}
+
+.main-content__form .form__input:focus:invalid {
+    border-bottom: 3px solid #0497df;
+}
+
+.main-content__form .form__group label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: block;
+    transition: all .3s;
+}
+
+.form__send-pst {
+    width: 30%;
+    border-radius: 3px;
+    padding: 15px;
+    background: #0497df;
+    color: #ffffff;
+    border: none;
+    font-size: 2rem;
+    font-family: 'Adamina', serif;
+    margin-top: 20px;
+}
+
+.form__send-pst:hover {
+    cursor: pointer;
+}
+
+.form__group-center {
+    display: flex;
+    justify-content: center;
+}
 
 @media screen and (min-width: 600px) {
     .side-nav {
@@ -272,7 +350,8 @@ footer {
         background-color: #fff;
     }
 
-    .main-content {
+    .main-content,
+    .main-content__cc {
         margin-left: 80px;
     }
 }
@@ -292,7 +371,8 @@ footer {
         font-size: 2rem;
     }
 
-    .main-content {
+    .main-content,
+    .main-content__cc {
         padding-left: 60px;
     }
 
@@ -343,8 +423,15 @@ footer {
         padding-left: 25px;
     }
 
-    .main-content {
-        padding-left: 180px;
+    .main-content,
+    .main-content__cc {
+        padding-left: 150px;
+        border: 1px solid #0497df;
+    }
+
+    .main-content__wrapper .main-content__form {
+        margin-left: 2rem;
+        width: 600px;
     }
 }
 
@@ -377,7 +464,13 @@ footer {
         padding-left: 25px;
     }
 
-    .main-content {
-        padding-left: 180px;
+    .main-content,
+    .main-content__cc {
+        padding-left: 150px;
+    }
+
+    .main-content__wrapper .main-content__form {
+        margin-left: 13rem;
+        width: 650px;
     }
 }
