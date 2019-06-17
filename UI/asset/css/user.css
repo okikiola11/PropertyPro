@@ -341,6 +341,7 @@ MY LISTING  */
     border: none;
     width: 100%;
     box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
+    position: relative;
 }
 
 .main-content__listin-ppt {
@@ -388,7 +389,6 @@ MY LISTING  */
 }
 
 /*****
-******
 UPDATE PROPERTY ADVERT  */
 .main-content__form-txt {
     font-size: 2rem;
@@ -397,6 +397,23 @@ UPDATE PROPERTY ADVERT  */
     margin-bottom: 15px;
     text-align: center;
     text-transform: uppercase;
+}
+
+/***
+MARK AS SOLD  */
+.main-content__sold {
+    background: #e74c3c;
+    padding: 6px 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    border-radius: 3px;
+    z-index: 9999;
+    position: absolute;
+    top: 10%;
+}
+
+.hide {
+    display: none;
 }
 
 /*****
@@ -437,6 +454,10 @@ MEDIA QUERIES  */
     .main-content,
     .main-content__cc {
         margin-left: 80px;
+    }
+
+    .main-content__sold {
+        top: 22%;
     }
 }
 
@@ -533,6 +554,16 @@ MEDIA QUERIES  */
     .main-content__listin-icons {
         padding-left: 3rem;
     }
+
+    .main-content__sold {
+        background: #e74c3c;
+        padding: 6px 20px;
+        font-size: 2rem;
+        color: #ffffff;
+        border-radius: 3px;
+        z-index: 9999;
+        position: absolute;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -580,5 +611,15 @@ MEDIA QUERIES  */
 
     .main-content__listin-icons {
         padding-left: 3rem;
+    }
+
+    .main-content__sold {
+        background: #e74c3c;
+        padding: 6px 20px;
+        font-size: 2rem;
+        color: #ffffff;
+        border-radius: 3px;
+        z-index: 9999;
+        position: absolute;
     }
 }
