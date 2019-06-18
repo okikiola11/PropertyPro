@@ -18,7 +18,8 @@ html {
 }
 
 .container {
-    padding: 25px;
+    padding: 15px;
+    margin: 1px 50px 1px 60px;
 }
 
 .container-fluid {
@@ -117,18 +118,28 @@ header nav ul li a:hover {
     letter-spacing: 2px;
 }
 
-.banner .search-container {
+.banner .search-container,
+.pp__wrapper .search-container {
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.banner .search-container input[type=text] {
-    width: 500px;
+.banner .search-container .search__type {
+    width: 230px;
     margin: 0;
     padding: 14px;
-    border-radius: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.banner .search-container .search__state,
+.banner .search-container .search__city {
+    width: 150px;
+    margin: 0;
+    padding: 14px;
+    border-radius: 10px;
     border: none;
 }
 
@@ -137,8 +148,8 @@ header nav ul li a:hover {
     background: rgb(30, 30, 30);
     color: #ffffff;
     border: none;
-    border-radius: 50px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 13px;
 }
 
 .search-container-txt {
@@ -153,13 +164,9 @@ header nav ul li a:hover {
     background: #808080;
 }
 
-.container {
-    margin: 1px 60px;
-}
-
 .container__inner {
     margin: 10px 1px 25px 1px;
-    margin-right: 5px;
+    /* margin-right: 5px; */
     line-height: 1.7;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -174,6 +181,7 @@ header nav ul li a:hover {
     padding-right: 2px;
     margin-right: 5px;
     transition: transform .3s;
+    position: relative;
 }
 
 .brd-line:hover {
@@ -190,8 +198,10 @@ header nav ul li a:hover {
     padding: 5px;
     text-align: right;
     color: #ffffff;
-    width: 95%;
+    width: 94.5%;
     font-size: 1.4rem;
+    position: absolute;
+    top: 0px;
 }
 
 .container__inner--rooms {
@@ -227,9 +237,26 @@ header nav ul li a:hover {
 }
 
 /* Pagination links */
+.p__set {
+    margin: 25px 6% 30px 6%;
+}
+
+.view-all-properties a {
+    background: rgb(30, 30, 30);
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    color: #ffffff;
+    border: none;
+    text-decoration: none;
+}
+
+.view-ppty__btn:hover {
+    cursor: pointer;
+}
+
 .pagination {
-    text-align: center;
-    margin-bottom: 30px;
+    margin-left: 7rem;
 }
 
 .pagination a {
@@ -253,6 +280,36 @@ header nav ul li a:hover {
 
 .clearfix {
     clear: both;
+}
+
+/****
+*****
+ VIEW ALL PROPERTY */
+.pp__wrapper {
+    background-image: url(../images/signup.jpg);
+    background-size: 100% 100%;
+    height: 30rem;
+    border-radius: 1px;
+    margin-top: -5px;
+    box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, .15);
+}
+
+.pp__container {
+    margin: 25px 0;
+}
+
+.p__btm {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.pp__wrapper__txt {
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    height: 20px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 /***
@@ -476,9 +533,10 @@ MEDIA QUERIES  */
         border-radius: 50px;
         padding: 10px;
     }
+
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1999px) {
+@media only screen and (min-width: 1000px) and (max-width: 1999px) {
     .container {
         padding: 1.6rem 0 3rem 0;
         display: flex;
@@ -489,4 +547,14 @@ MEDIA QUERIES  */
     .container__inner {
         width: 25%;
     }
+
+    .p__set {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pagination {
+        margin-left: 40rem;
+    }
+
 }
