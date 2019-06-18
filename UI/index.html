@@ -22,6 +22,7 @@
 
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="property.html">Property</a></li>
                 <li><a href="signup.html">Sign up</a></li>
                 <li><a href="login.html">Log in</a></li>
             </ul>
@@ -31,8 +32,28 @@
     <div class="banner">
         <div class="search-container">
             <div class="search-container-txt">Find the best Properties</div>
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Submit</button>
+            <select name="" id="" class="search__type" name="type">
+                <option value="0">Search Type.. </option>
+                <option value="1"> 2 Bedroom Flat </option>
+                <option value="2"> 3 Bedroom Flat </option>
+                <option value="4"> Single room self contain </option>
+                <option value="5"> Duplex </option>
+            </select>
+            <select name="" id="" class="search__state" name="state">
+                <option value="0">Search State..</option>
+                <option value="1"> Lagos </option>
+                <option value="2"> Abuja </option>
+                <option value="3"> Port Harcourt </option>
+                <option value="4"> Ondo </option>
+            </select>
+            <select name="" id="" class="search__city" name="city">
+                <option value="0">Search City..</option>
+                <option value="1"> Lagos </option>
+                <option value="2"> FCT Abuja </option>
+                <option value="3"> Calabar </option>
+                <option value="4"> Akure </option>
+            </select>
+            <button type="submit" class="button">Submit</button>
         </div>
     </div>
     <div class="under-banner">
@@ -119,14 +140,22 @@
 
     </div>
 
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a class="active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">&raquo;</a>
+    <div class="p__set">
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a class="active" href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+        <div class="view-all-properties">
+            <a href="property.html" title="View all properties" class="button" class="view-ppty__btn"> View
+                Properties</a>
+        </div>
     </div>
+
 
     <footer>
         <div class="footer">
