@@ -166,7 +166,7 @@ span:after {
 .main-content {
     padding-top: 44px;
     background: #dfe6e9;
-    height: 100vh;
+    /* height: 100vh; */
     padding-left: 50px;
     padding-bottom: 40px;
 }
@@ -195,22 +195,13 @@ span:after {
 
 .container-inner {
     border: 1px solid #dfe6e9;
-    border-radius: 4px;
     padding-right: 7px;
-    margin-right: 7px;
-}
-
-.container-inner:hover {
-    background: #dfe6e9;
-    cursor: pointer;
-    transition: background 250ms ease-in-out;
-    background-color: 250ms ease-in-out;
-    color: #0497df;
-    border-right: 4px solid #0497df;
+    margin-right: 40px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .container-inner__i {
-    padding: 35px 1px;
+    padding: 15px 1px;
     text-align: center;
 }
 
@@ -219,14 +210,15 @@ span:after {
     color: rgb(30, 30, 30);
 }
 
-.container-inner__i span i {
-    font-size: 3rem;
+.container-inner__i span {
+    font-size: 3.5rem;
+    font-weight: 600;
 }
 
 .container-inner__i .fas-txt {
     font-size: 1.7rem;
     font-family: 'Adamina', serif;
-    padding-top: 25px;
+    padding-top: 5px;
 }
 
 footer {
@@ -257,9 +249,72 @@ footer {
 /***********
 ***********
  POST A PROPERTY *****************/
+.listin__wrapper__dd {
+    margin: 40px 0;
+    padding-bottom: 35px;
+}
+
+.list__inner_wrapper {
+    /* display: flex; */
+}
+
+.ff__inner_wrapper {
+    background: rgba(255, 255, 255, .8);
+    width: 100%;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 1px;
+    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
+}
+
+.ff__inner_img img {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.ff__inner_btn {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.ff__inner_btn a {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.txt-list-wrap {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ff__inner_txt {
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.ff__inner_txts {
+    font-size: 1.5rem;
+}
+
+.inner__btn_view {
+    background: rgb(30, 30, 30);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 5px;
+}
+
 .main-content__form {
     background-color: #f5f6fa;
     padding: 50px;
+}
+
+.clearfix {
+    clear: both;
 }
 
 .main-content__form .form__group:not(:last-child) {
@@ -465,7 +520,7 @@ MY LISTING  */
 }
 
 .main-content__listin-icons {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .list-icons__sp {
@@ -499,9 +554,16 @@ MARK AS SOLD  */
     font-size: 2rem;
     color: #ffffff;
     border-radius: 3px;
-    z-index: 9999;
     position: absolute;
-    top: 10%;
+}
+
+.ff__mark_sold {
+    background: #e74c3c;
+    padding: 6px 25px;
+    font-size: 2rem;
+    color: #ffffff;
+    position: absolute;
+    top: 28rem;
 }
 
 .hide {
@@ -586,7 +648,7 @@ MEDIA QUERIES  */
     }
 
     .main-content__listin-icons {
-        padding-left: 3rem;
+        /* padding-left: 3rem; */
     }
 }
 
@@ -631,7 +693,7 @@ MEDIA QUERIES  */
     .main-content,
     .main-content__cc {
         padding-left: 150px;
-        border: 1px solid #0497df;
+        /* border: 1px solid #0497df; */
     }
 
     .main-content__wrapper .main-content__form {
@@ -655,6 +717,14 @@ MEDIA QUERIES  */
         border-radius: 3px;
         z-index: 9999;
         position: absolute;
+    }
+
+    .list__inner_wrapper {
+        display: flex;
+    }
+
+    .ff__inner_wrapper {
+        width: 32%;
     }
 }
 
@@ -702,7 +772,7 @@ MEDIA QUERIES  */
     }
 
     .main-content__listin-icons {
-        padding-left: 3rem;
+        padding-left: 4.9rem;
     }
 
     .main-content__sold {
@@ -713,5 +783,17 @@ MEDIA QUERIES  */
         border-radius: 3px;
         z-index: 9999;
         position: absolute;
+    }
+
+    .main-content__listin-ppt img {
+        width: 350px;
+    }
+
+    .list__inner_wrapper {
+        display: flex;
+    }
+
+    .ff__inner_wrapper {
+        width: 32%;
     }
 }

@@ -22,7 +22,6 @@ navTrigger.addEventListener('click', () => {
 
 markDiv.addEventListener('click', (e) => {
     e.preventDefault();
-    alert('hello');
 
     soldDiv.classList.remove('hide');
 })
