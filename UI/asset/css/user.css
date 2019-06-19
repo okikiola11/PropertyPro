@@ -255,12 +255,12 @@ footer {
 }
 
 .list__inner_wrapper {
-    display: flex;
+    /* display: flex; */
 }
 
 .ff__inner_wrapper {
     background: rgba(255, 255, 255, .8);
-    width: 32%;
+    width: 100%;
     margin: 0 10px;
     padding: 10px;
     border-radius: 1px;
@@ -718,6 +718,14 @@ MEDIA QUERIES  */
         z-index: 9999;
         position: absolute;
     }
+
+    .list__inner_wrapper {
+        display: flex;
+    }
+
+    .ff__inner_wrapper {
+        width: 32%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -779,5 +787,13 @@ MEDIA QUERIES  */
 
     .main-content__listin-ppt img {
         width: 350px;
+    }
+
+    .list__inner_wrapper {
+        display: flex;
+    }
+
+    .ff__inner_wrapper {
+        width: 32%;
     }
 }
