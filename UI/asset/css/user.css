@@ -327,6 +327,98 @@ footer {
 
 /****
 *****
+DELETE A PROPERTY ADVERT  */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.inner-popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.inner-popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 2rem;
+}
+
+.inner-popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    text-decoration: none;
+    color: #333;
+}
+
+.inner-popup .close:hover {
+    color: #be363a;
+    font-weight: bold;
+}
+
+.inner-popup .content {
+    max-height: 30%;
+    overflow: auto;
+    font-size: 1.7rem;
+}
+
+.btn-action {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-yes,
+.btn-no {
+    color: #fff !important;
+    padding: 8px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-right: 10px;
+}
+
+.btn-yes {
+    background: #0497df;
+    width: 25% !important;
+}
+
+.btn-no {
+    background: #be363a;
+    width: 26% !important;
+}
+
+.btn-yes a,
+.btn-no a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/****
+*****
 MY LISTING  */
 .main-content__listin {
     background-color: #f5f6fa;
