@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="PropertyPro Lite" />
+    <meta name="keywords" content="PropertyPro Lite" />
+    <meta name="author" content="Apelehin Okikiola" />
+    <title>PropertyPro Lite:: Dashboard</title>
+    <link rel="stylesheet" href="asset/css/user.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="logo" id="logo">
+            <i class="fa fa-tachometer"></i>
+            <span><a href="index.html">PropertyPro Lite</a></span>
+        </div>
+
+        <a href="#" class="nav-trigger">
+            <span></span>
+        </a>
+
+    </header>
+
+    <div class="side-nav">
+        <div class="logo">
+            <div><i class="fa fa-user" aria-hidden="true"></i></div>
+            <span>John Doe</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="user-dashboard.html">
+                        <span><i class="far fa-user"></i></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="post-a-property.html">
+                        <span><i class="far fa-user"></i></span>
+                        <span>Post a property</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="my-listing.html">
+                        <span><i class="fas fa-cog"></i></span>
+                        <span>My Listing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="my-profile.html">
+                        <span><i class="fas fa-cog"></i></span>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <span><i class="far fa-arrow-alt-circle-left"></i></span>
+                        <span>Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="main-content__cc">
+        <div class="main-content__wrapper">
+            <div class="main-content__form">
+                <div class="main-content__form-txt"> Post a Property Advert</div>
+                <form action="">
+                    <div class="form__group">
+                        <label for="state" class="form__label">Price</label>
+                        <input type="text" class="form__input" placeholder="Amount in Naira (NGN)" id="price" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="state" class="form__label">State</label>
+                        <select name="" class="form__input" id="state">
+                            <option value="0">--- Select State ---</option>
+                            <option value="1">Lagos</option>
+                            <option value="2">Abuja</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="city" class="form__label">City</label>
+                        <select name="" class="form__input" id="city">
+                            <option value="0">--- Select City ---</option>
+                            <option value="1">Lagos</option>
+                            <option value="2">Abuja</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="address" class="form__label">Address</label>
+                        <textarea name="" class="form__input" id="address" cols="30" rows="4"
+                            placeholder="Address Area"></textarea>
+                    </div>
+                    <div class="form__group">
+                        <label for="type" class="form__label">Type of property</label>
+                        <select name="" class="form__input" id="type">
+                            <option value="0">--- Select Property Type ---</option>
+                            <option value="1">2 Bedroom Flat</option>
+                            <option value="2">3 Bedroom Flat</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label for="image-url" class="form__label">Image URL</label>
+                        <input type="file" name="" class="form__input" id="image-url">
+                    </div>
+
+                    <div class="form__group form__group-center">
+                        <button type="button" class="form__send-pst"> Send </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-txt1">Property<span class="logo-b">P</span>ro Lite.</div>
+            <div class="footer-txt2"> All Rights Reserved &copy; 2019 </div>
+        </div>
+    </footer>
+
+    <script src="asset/js/main.js"></script>
+</body>
+
+</html>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Adamina&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -168,10 +170,15 @@ header nav ul li a:hover {
 }
 
 .brd-line {
-    border-right: 1px solid #808080;
     padding-left: 5px;
     padding-right: 2px;
     margin-right: 5px;
+    transition: transform .3s;
+}
+
+.brd-line:hover {
+    transform: scaleY(1.05);
+    margin-bottom: 7px;
 }
 
 .brd-line:last-child {
@@ -203,7 +210,7 @@ header nav ul li a:hover {
 
 .btn-view {
     background: rgb(30, 30, 30);
-    padding: 10px;
+    padding: 10px 15px;
     width: 20%;
     font-size: 1.3rem;
     font-family: 'Arial';
@@ -253,61 +260,83 @@ SIGNUP PAGE
  ****/
 .signup-container {
     margin-top: -5px;
-    display: flex;
+    /* display: flex; */
 }
 
 .first-qtr {
-    width: 36vw;
+    /* width: 36vw; */
+    background-image: linear-gradient(105deg,
+            rgba(255, 255, 255, .9) 0%,
+            rgba(255, 255, 255, .9) 50%,
+            transparent 50%), url(../images/signup.jpg);
+    background-size: 100%;
+    /* background-repeat: no-repeat; */
+    height: 65rem;
+    border-radius: 1px;
+    box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, .15);
 }
 
-.first-qtr__banner {
-    background-image: url(../images/signup.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    height: 600px;
-    opacity: 0.8;
-    z-index: 1;
+.first-qtr__form {
+    width: 50%;
+    padding: 3.8rem 6rem;
 }
 
-.first-qtr__text {
-    font-size: 2.9rem;
-    color: #ffffff;
-    font-family: 'Adamina', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.first-qtr__form .form__group:not(:last-child) {
+    margin-bottom: 1.2rem;
 }
 
-.second-qtr {
-    padding: 35px 150px;
-    width: 63vw;
-    border-top: 1px solid #808080;
-    font-size: 1.6rem;
-    font-family: Arial, Helvetica, sans-serif;
+.login-wrapper .form__group:not(:last-child) {
+    margin-bottom: .01rem;
 }
 
-.second-qtr div {
-    padding: 5px;
-    color: #808080;
+.first-qtr__form .form__input,
+.login-wrapper .form__input {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
 }
 
-#inputbx {
-    padding: 0.9rem 0.8rem;
-    font-size: 1.2rem;
-    outline: none;
-    outline-style: none;
-    color: #333333;
-    letter-spacing: 1px;
-    margin: 0.3em;
+.login-wrapper .form__input {
     width: 100%;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid #838383;
 }
 
-.signup-btn {
-    margin-top: 15px;
+.first-qtr__form .form__input::-webkit-input-placeholder,
+.login-wrapper .form__input::-webkit-input-placeholder {
+    color: #999999;
+}
+
+.first-qtr__form .form__input:focus,
+.login-wrapper .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgb(30, 30, 30, .1);
+    border-bottom: 3px solid #cccccc;
+}
+
+.first-qtr__form .form__input:focus:invalid,
+.login-wrapper .form__input:focus:invalid {
+    border-bottom: 3px solid #0497df;
+}
+
+.first-qtr__form .form__group label,
+.login-wrapper .form__group label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .2rem;
+    display: block;
+    transition: all .3s;
+}
+
+.first-qtr__form .form__input:placeholder-shown+label.form__label,
+.login-wrapper .form__input:placeholder-shown+label.form__label {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .btn-submit {
@@ -317,6 +346,7 @@ SIGNUP PAGE
     border: none;
     border-radius: 5px;
     text-decoration: none;
+    font-size: 1.6rem;
 }
 
 .btn-submit:hover {
@@ -327,20 +357,68 @@ SIGNUP PAGE
     display: flex;
 }
 
+.mv-signl {
+    display: flex;
+    font-size: 1.6rem;
+}
+
 .signup-btn-lg {
-    margin-top: 15px;
+    color: #808080;
+    font-size: 1.6rem;
 }
 
 .signup-btn-lg span a {
     text-decoration: none;
-    color: #979797;
+    color: rgb(30, 30, 30);
+    font-weight: 500;
 }
 
 .signup-btn-lg span a:hover {
-    text-decoration: none;
-    color: #000000;
+    text-decoration: underline;
 }
 
+.sp-price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Adamina', serif;
+    padding-right: 2px;
+}
+
+/*****
+LOGIN PAGE
+****/
+.login-container {
+    border-top: 1px solid #979797;
+    margin-top: -5px;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.login-wrapper form {
+    padding: 40px;
+    width: 500px;
+    margin: 20px auto;
+    background: #f9fbfd;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.login-wrapper form div {
+    padding: 10px;
+}
+
+.login-wrapper form label {
+    font-size: 2rem;
+}
+
+/***
+FOOTER  */
 .footer {
     padding: 30px;
     text-align: center;
@@ -359,6 +437,9 @@ SIGNUP PAGE
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/****
+****
+MEDIA QUERIES  */
 @media screen and (max-width: 600px) {
     .banner .search-container input[type=text] {
         width: 250px;

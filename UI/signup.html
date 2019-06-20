@@ -10,8 +10,6 @@
     <meta name="author" content="Apelehin Okikiola" />
     <title>PropertyPro Lite:: Signup </title>
     <link rel="stylesheet" href="asset/css/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Adamina&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -23,7 +21,6 @@
 
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="apartment.html">Apartment</a></li>
                 <li><a href="login.html">Log in</a></li>
             </ul>
         </nav>
@@ -31,51 +28,53 @@
 
     <div class="signup-container">
         <div class="first-qtr">
-            <div class="first-qtr__banner">
+            <!-- <div class="first-qtr__banner">
                 <div class="first-qtr__text">Sign up</div>
+            </div> -->
+
+            <div class="first-qtr__form">
+                <form action="#">
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="First Name" id="fname" required>
+                        <label for="fname" class="form__label">First Name</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="Last Name" id="lname" required>
+                        <label for="lname" class="form__label">Last Name</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="email" class="form__input" placeholder="Email" id="email" required>
+                        <label for="email" class="form__label">Email Address</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="password" class="form__input" placeholder="Password" id="password" required>
+                        <label for="password" class="form__label">Password</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="cpassword" class="form__input" placeholder="Password" id="cpassword" required>
+                        <label for="cpassword" class="form__label">Confirm Password</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="Phone Number" id="phoneno" required>
+                        <label for="phoneno" class="form__label">Phone Number</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="Address" id="address" required>
+                        <label for="address" class="form__label">Address</label>
+                    </div>
+
+                    <div class="mv-sign">
+                        <div class="signup-btn">
+                            <a href="login.html" class="btn-submit"> Submit </a>
+                        </div>
+                        <div class="signup-btn-lg">
+                            Already have an account <span><a href="login.html">Login</a></span>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="second-qtr">
-            <form action="">
-                <div>
-                    <label for="">FirstName</label>
-                    <input type="text" name="firstname" id="inputbx">
-                </div>
-                <div>
-                    <label for="">LastName</label>
-                    <input type="text" name="lastname" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Email</label>
-                    <input type="text" name="email" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Password</label>
-                    <input type="text" name="password" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Confirm Password</label>
-                    <input type="text" name="cpassword" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Phone Number</label>
-                    <input type="text" name="phonenumber" id="inputbx">
-                </div>
-                <div>
-                    <label for="">Address</label>
-                    <input type="text" name="firstname" id="inputbx">
-                </div>
 
-                <div class="mv-sign">
-                    <div class="signup-btn">
-                        <a href="login.html" class="btn-submit"> Submit </a>
-                    </div>
-                    <div class="signup-btn-lg">
-                        Already have an account <span><a href="login.html">Login</a></span>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
 
     <footer>
