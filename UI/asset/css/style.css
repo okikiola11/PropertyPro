@@ -243,22 +243,53 @@ header nav ul li a:hover {
   margin: 25px 6% 30px 6%;
 }
 
+.view-all-properties {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .view-all-properties a {
   background: rgb(30, 30, 30);
   padding: 10px;
   font-size: 1.5rem;
-  border-radius: 5px;
   color: #ffffff;
   border: none;
   text-decoration: none;
 }
+
+.view-all-properties a:hover {
+  animation: shake 0.6s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, -1px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translate(2px, -1px) rotate(2deg);
+  }
+
+  100% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+}
+
 
 .view-ppty__btn:hover {
   cursor: pointer;
 }
 
 .pagination {
-  margin-left: 7rem;
+  text-align: center;
 }
 
 .pagination a {
@@ -425,6 +456,7 @@ SIGNUP PAGE
 .signup-btn-lg {
   color: #808080;
   font-size: 1.6rem;
+  display: none;
 }
 
 .signup-btn-lg span a {
@@ -456,7 +488,7 @@ SIGNUP PAGE
 /***
 **** VIEW SPECIFIC PROPERTY TYPE */
 .flex__container {
-  margin: -5px 35px 25px 45px;
+  margin: -5px 30px 25px 35px;
 }
 
 .flex__container__type {
@@ -466,6 +498,8 @@ SIGNUP PAGE
 
 .flex__container__type_S {
   flex: 1;
+  margin-top: 50px;
+  background: rgb(255, 255, 255, 0.1);
 }
 
 .flex__container_title {
@@ -554,12 +588,6 @@ SIGNUP PAGE
 .hdr-pr {
   font-size: 1.6rem;
   padding-left: 10px;
-}
-
-.flex__container__type_S {
-  margin-top: 43px;
-  box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, 0.15);
-  background: rgb(255, 255, 255, 0.1);
 }
 
 .flex_container_S1 {
@@ -675,7 +703,7 @@ MEDIA QUERIES  */
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 800px) and (min-width: 999px) {
   .banner .search-container input[type="text"] {
     width: 500px;
     margin: 0;
@@ -697,12 +725,15 @@ MEDIA QUERIES  */
     border-bottom: 1px solid #cccccc;
     padding: 10px;
   }
+
+
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (max-width: 900px) {
   .flex__container_top {
     padding: 10px 30px;
   }
+
 }
 
 @media only screen and (min-width: 1000px) {
@@ -715,15 +746,6 @@ MEDIA QUERIES  */
 
   .container__inner {
     width: 25%;
-  }
-
-  .p__set {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .pagination {
-    /* margin-left: 40rem; */
   }
 
   .pagination-center {
@@ -779,6 +801,7 @@ MEDIA QUERIES  */
   .flex-sp {
     padding-left: 30px;
   }
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -820,4 +843,9 @@ MEDIA QUERIES  */
     height: 120px;
     margin-bottom: 5px;
   }
+
+  .signup-btn-lg {
+    display: inline;
+  }
+
 }

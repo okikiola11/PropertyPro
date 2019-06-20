@@ -166,9 +166,12 @@ span:after {
 .main-content {
     padding-top: 44px;
     background: #dfe6e9;
-    /* height: 100vh; */
     padding-left: 50px;
     padding-bottom: 40px;
+}
+
+.main__cc_hh {
+    height: 100vh;
 }
 
 .main-content__cc {
@@ -254,61 +257,8 @@ footer {
     padding-bottom: 35px;
 }
 
-.list__inner_wrapper {
-    /* display: flex; */
-}
-
-.ff__inner_wrapper {
-    background: rgba(255, 255, 255, .8);
-    width: 100%;
-    margin: 0 10px;
-    padding: 10px;
-    border-radius: 1px;
-    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
-}
-
-.ff__inner_img img {
-    width: 100%;
-    height: 250px;
-    border-radius: 5px;
-    position: relative;
-}
-
-.ff__inner_btn {
-    float: right;
-    margin-bottom: 10px;
-}
-
-.ff__inner_btn a {
-    text-decoration: none;
-    font-size: 1.5rem;
-}
-
-.txt-list-wrap {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.ff__inner_txt {
-    font-size: 1.8rem;
-    line-height: 1.6;
-}
-
-.ff__inner_txts {
-    font-size: 1.5rem;
-}
-
-.inner__btn_view {
-    background: rgb(30, 30, 30);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 5px;
-}
-
-.main-content__form {
+.main-content__form,
+.main-content__form-new {
     background-color: #f5f6fa;
     padding: 50px;
 }
@@ -317,11 +267,13 @@ footer {
     clear: both;
 }
 
-.main-content__form .form__group:not(:last-child) {
+.main-content__form .form__group:not(:last-child),
+.main-content__form-new .form__group:not(:last-child) {
     margin-bottom: 2rem;
 }
 
-.main-content__form .form__input {
+.main-content__form .form__input,
+.main-content__form-new .form__input {
     font-size: 1.5rem;
     padding: 1.5rem 2rem;
     border-radius: 2px;
@@ -380,9 +332,98 @@ footer {
     justify-content: center;
 }
 
+.section--space {
+    margin-top: 30px;
+}
+
+.section--type-ad span img {
+    width: 100%;
+    margin-right: 20px;
+}
+
+.section--type-ad p {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.section-title-ad {
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.section-title-s span {
+    letter-spacing: 1px;
+    line-height: 16px;
+    font-size: 1.3rem;
+}
+
+.section--type p {
+    float: left;
+    width: 70%;
+}
+
+.b-amt {
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 32%;
+    padding-right: 20px;
+    display: flex;
+}
+
+.b-amt a {
+    text-decoration: none;
+}
+
+.icon-edit {
+    border-radius: 20px;
+    background-color: #78cce2;
+    color: #ffffff;
+    padding: 9px;
+    margin-right: 5px;
+}
+
+.add-list-btn {
+    background: #78cce2;
+    color: #ffffff;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.center-btn {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.center-btn a {
+    text-decoration: none;
+}
+
 /****
 *****
 DELETE A PROPERTY ADVERT  */
+.btn-delete {
+    border-radius: 20px;
+    background: #be363a;
+    color: #ffffff;
+    padding: 9px;
+    cursor: pointer;
+}
+
+.button {
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.button:hover {
+    /* background: #be363a; */
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -444,8 +485,7 @@ DELETE A PROPERTY ADVERT  */
     justify-content: center;
 }
 
-.btn-yes,
-.btn-no {
+.btn-yes {
     color: #fff !important;
     padding: 8px;
     margin: 10px 0;
@@ -454,85 +494,14 @@ DELETE A PROPERTY ADVERT  */
     font-weight: 500;
     font-size: 1.6rem;
     margin-right: 10px;
-}
-
-.btn-yes {
-    background: #0497df;
+    background: #be363a;
+    /* #0497df; */
     width: 25% !important;
 }
 
-.btn-no {
-    background: #be363a;
-    width: 26% !important;
-}
-
-.btn-yes a,
-.btn-no a {
+.btn-yes a {
     color: #fff;
     text-decoration: none;
-}
-
-/****
-*****
-MY LISTING  */
-.main-content__listin {
-    background-color: #f5f6fa;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-}
-
-.main-content__lintin-wrapper {
-    padding: 1.5rem 2rem;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, .8);
-    border: none;
-    width: 100%;
-    box-shadow: 0 15px 60px 0 rgba(31, 48, 146, 0.11);
-    position: relative;
-}
-
-.main-content__listin-ppt {
-    padding-right: 3.5rem;
-}
-
-.main-content__listin-ppt img {
-    width: 350px;
-}
-
-.main-content__listin-ppt:last-child {
-    padding-right: 0;
-}
-
-.main-content__listing-hdr {
-    font-size: 2.2rem;
-    color: #0497df;
-}
-
-.main-content__listing-detls {
-    margin-top: 10px;
-    font-size: 1.5rem;
-    line-height: 1.5;
-}
-
-.main-content__listing-pr {
-    margin-top: 10px;
-    font-size: 1.7rem;
-}
-
-.main-content__listin-icons {
-    font-size: 2rem;
-}
-
-.list-icons__sp {
-    padding-right: 12px;
-}
-
-.list-icons__sp i {
-    color: #0497df;
-}
-
-.list-icons__sp:hover {
-    cursor: pointer;
 }
 
 /*****
@@ -548,14 +517,6 @@ UPDATE PROPERTY ADVERT  */
 
 /***
 MARK AS SOLD  */
-.main-content__sold {
-    background: #e74c3c;
-    padding: 6px 20px;
-    font-size: 2rem;
-    color: #ffffff;
-    border-radius: 3px;
-    position: absolute;
-}
 
 .ff__mark_sold {
     background: #e74c3c;
@@ -563,7 +524,7 @@ MARK AS SOLD  */
     font-size: 2rem;
     color: #ffffff;
     position: absolute;
-    top: 28rem;
+    /* top: 28rem; */
 }
 
 .hide {
@@ -613,6 +574,7 @@ MEDIA QUERIES  */
     .main-content__sold {
         top: 22%;
     }
+
 }
 
 @media screen and (min-width: 800px) {
@@ -643,13 +605,6 @@ MEDIA QUERIES  */
         width: 50%;
     }
 
-    .main-content__lintin-wrapper {
-        /* display: flex; */
-    }
-
-    .main-content__listin-icons {
-        /* padding-left: 3rem; */
-    }
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1199px) {
@@ -726,6 +681,29 @@ MEDIA QUERIES  */
     .ff__inner_wrapper {
         width: 32%;
     }
+
+    .b-amt {
+        float: left;
+        width: 25%;
+    }
+
+    .section--type-ad span img {
+        float: left;
+        width: 20%;
+    }
+
+    .section--type-ad p {
+        float: left;
+        width: 35%;
+    }
+
+    .b-amt {
+        float: left;
+        font-size: 1.8rem;
+        font-weight: 600;
+        width: 26%;
+        padding-right: 20px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -795,5 +773,26 @@ MEDIA QUERIES  */
 
     .ff__inner_wrapper {
         width: 32%;
+    }
+
+    .b-amt {
+        float: right;
+        width: 30%;
+    }
+
+    .section--type-ad span img {
+        float: left;
+        width: 20%;
+    }
+
+    .section--type-ad p {
+        float: left;
+        width: 38%;
+    }
+
+    .b-amt {
+        width: 32%;
+        padding-right: 20px;
+        display: inline;
     }
 }
