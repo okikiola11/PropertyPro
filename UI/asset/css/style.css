@@ -126,6 +126,31 @@ header nav ul li a:hover {
   transform: translate(-50%, -50%);
 }
 
+.search-container_cc {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: 20px 0;
+}
+
+.search-container_cc .search__type {
+  width: 330px;
+  margin: 0;
+  padding: 14px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+
+.search-container_cc .search__state,
+.search-container_cc .search__city {
+  width: 180px;
+  margin: 0;
+  padding: 14px;
+  border-radius: 5px;
+  border: none;
+  border: 1px solid #808080;
+}
+
 .banner .search-container .search__type {
   width: 230px;
   margin: 0;
@@ -143,7 +168,8 @@ header nav ul li a:hover {
   border: none;
 }
 
-.banner .search-container a {
+.banner .search-container a,
+.search-container_cc a {
   width: 100px;
   background: rgb(30, 30, 30);
   color: #ffffff;
@@ -152,6 +178,7 @@ header nav ul li a:hover {
   text-decoration: none;
   font-size: 1.6rem;
   padding: 13px;
+  text-align: center;
 }
 
 .search-container-txt {
@@ -200,7 +227,7 @@ header nav ul li a:hover {
   padding: 5px;
   text-align: right;
   color: #ffffff;
-  width: 94.5%;
+  width: 92.9%;
   font-size: 1.4rem;
   position: absolute;
   top: 0px;
@@ -245,7 +272,7 @@ header nav ul li a:hover {
 
 .view-all-properties {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .view-all-properties a {
@@ -505,7 +532,9 @@ SIGNUP PAGE
 .flex__container_title {
   font-size: 2.4rem;
   color: #0497df;
+  text-align: center;
   margin: 20px 0;
+  margin-top: 30px;
 }
 
 .flex__container_bx {
@@ -597,9 +626,9 @@ SIGNUP PAGE
   text-align: center;
   color: #ffffff;
   font-size: 1.6rem;
-  border-radius: 5px;
   line-height: 1.6;
 }
+
 
 /******
 ******
@@ -631,13 +660,13 @@ LOGIN PAGE
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+
 }
 
 .login-wrapper form {
   padding: 40px;
   width: 500px;
-  margin: 20px auto;
+  margin: 30px auto;
   background: #f9fbfd;
   border: 1px solid #ddd;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
@@ -661,7 +690,6 @@ LOGIN PAGE
 FOOTER  */
 .footer {
   padding: 30px;
-  text-align: center;
   line-height: 2;
   background-color: #979797;
   color: #ffffff;
@@ -669,12 +697,45 @@ FOOTER  */
 
 .footer-txt1 {
   font-size: 2.9rem;
+  text-align: center;
   font-family: "Adamina", serif;
 }
 
 .footer-txt2 {
   font-size: 1.7rem;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-banner {
+  background-image: url(../images/pic-report.jpg);
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+
+/*****
+FLAG POST */
+.ppty__report {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -5rem;
+}
+
+.ppty__report a {
+  background: rgb(30, 30, 30);
+  font-size: 1.6rem;
+  color: #ffffff;
+  padding: 2px 10px;
+  text-decoration: none;
+}
+
+.main-content__form-txt {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-family: 'Adamina', serif;
+  margin-bottom: 5px;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 /****
