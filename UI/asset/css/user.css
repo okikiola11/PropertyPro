@@ -337,7 +337,7 @@ footer {
 }
 
 .section--type-ad span img {
-    width: 100%;
+    width: 30%;
     margin-right: 20px;
 }
 
@@ -366,9 +366,9 @@ footer {
 .b-amt {
     font-size: 1.8rem;
     font-weight: 600;
-    width: 32%;
+    /* width: 32%; */
     padding-right: 20px;
-    display: flex;
+    /* display: flex; */
 }
 
 .b-amt a {
@@ -515,6 +515,11 @@ UPDATE PROPERTY ADVERT  */
     text-transform: uppercase;
 }
 
+.outter-dash-add {
+    margin: 1px auto 0;
+    width: 650px;
+}
+
 /***
 MARK AS SOLD  */
 
@@ -523,8 +528,7 @@ MARK AS SOLD  */
     padding: 6px 25px;
     font-size: 2rem;
     color: #ffffff;
-    position: absolute;
-    /* top: 28rem; */
+    width: 15%;
 }
 
 .hide {
@@ -605,6 +609,37 @@ MEDIA QUERIES  */
         width: 50%;
     }
 
+    .main-content__wrapper {
+        width: 97%;
+    }
+
+    .outter-dash-add {
+        width: 700px;
+    }
+
+    .section--type-ad span img {
+        float: left;
+        width: 150px;
+    }
+
+    .section--type-ad p {
+        float: left;
+        width: 200px;
+    }
+
+    .b-amt {
+        float: left;
+        font-size: 1.8rem;
+        font-weight: 600;
+        width: 330px;
+        padding-right: 20px;
+    }
+
+    .ff__mark_sold {
+        position: absolute;
+        width: 9.2rem;
+    }
+
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1199px) {
@@ -682,11 +717,6 @@ MEDIA QUERIES  */
         width: 32%;
     }
 
-    .b-amt {
-        float: left;
-        width: 25%;
-    }
-
     .section--type-ad span img {
         float: left;
         width: 20%;
@@ -694,15 +724,24 @@ MEDIA QUERIES  */
 
     .section--type-ad p {
         float: left;
-        width: 35%;
+        width: 30%;
     }
 
     .b-amt {
         float: left;
         font-size: 1.8rem;
         font-weight: 600;
-        width: 26%;
+        width: 46%;
         padding-right: 20px;
+    }
+
+    .outter-dash-add {
+        width: 650px;
+    }
+
+    .ff__mark_sold {
+        position: absolute;
+        width: 9.2rem;
     }
 }
 
@@ -745,6 +784,10 @@ MEDIA QUERIES  */
         width: 650px;
     }
 
+    .main-content__wrapper {
+        width: 1000px;
+    }
+
     .main-content__lintin-wrapper {
         display: flex;
     }
@@ -775,11 +818,6 @@ MEDIA QUERIES  */
         width: 32%;
     }
 
-    .b-amt {
-        float: right;
-        width: 30%;
-    }
-
     .section--type-ad span img {
         float: left;
         width: 20%;
@@ -791,8 +829,18 @@ MEDIA QUERIES  */
     }
 
     .b-amt {
+        float: right;
         width: 32%;
         padding-right: 20px;
-        display: inline;
+    }
+
+    .outter-dash-add {
+        width: 980px;
+    }
+
+    .ff__mark_sold {
+        color: #ffffff;
+        position: absolute;
+        width: 9.2rem;
     }
 }
