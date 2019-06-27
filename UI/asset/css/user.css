@@ -216,6 +216,8 @@ span:after {
 .container-inner__i span {
     font-size: 3.5rem;
     font-weight: 600;
+    color: #0497df;
+    font-family: "Adamina", serif;
 }
 
 .container-inner__i .fas-txt {
@@ -357,6 +359,9 @@ footer {
     line-height: 16px;
     font-size: 1.3rem;
 }
+.section-title-s i {
+    color: #0497df;
+}
 
 .section--type p {
     float: left;
@@ -377,14 +382,14 @@ footer {
 
 .icon-edit {
     border-radius: 20px;
-    background-color: #78cce2;
+    background-color: #0497df;
     color: #ffffff;
     padding: 9px;
     margin-right: 5px;
 }
 
 .add-list-btn {
-    background: #78cce2;
+    background: #0497df;
     color: #ffffff;
     font-size: 1.6rem;
     letter-spacing: 1px;
@@ -504,6 +509,66 @@ DELETE A PROPERTY ADVERT  */
     text-decoration: none;
 }
 
+
+/***
+***PRELOADER  */
+.preload {
+    position: fixed;
+    top: 0;
+    z-index: 10001;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+  }
+  .preload-finish {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .preload span {
+    width: 10px;
+    height: 60px;
+    background: #ffffff;
+    margin: 0 1px;
+    animation: loading 800ms ease-in-out infinite;
+  }
+  .preload span:nth-child(1) {
+    background: #0497df;
+    animation-delay: -700ms;
+  }
+  .preload span:nth-child(2) {
+    background: #eade3d;
+    animation-delay: -600ms;
+  }
+  .preload span:nth-child(3) {
+    background: #55acee;
+    animation-delay: -500ms;
+  }
+  .preload span:nth-child(4) {
+    background: #ec902e;
+    animation-delay: -400ms;
+  }
+  .preload span:nth-child(5) {
+    background: rgba(214, 48, 49, 0.5);
+    animation-delay: -700ms;
+  }
+  .preload span:nth-child(6) {
+    background: rgba(253, 203, 110, 0.5);
+    animation-delay: -700ms;
+  }
+  @keyframes loading {
+    0%,60%,100% {
+      transform: scaleY(0.05);
+    }
+    35% {
+      transform: scale(1);
+    }
+  }
+
+
 /*****
 UPDATE PROPERTY ADVERT  */
 .main-content__form-txt {
@@ -520,15 +585,74 @@ UPDATE PROPERTY ADVERT  */
     width: 650px;
 }
 
+
+/***
+***PRELOADER  */
+.preload {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+  }
+  .preload-finish {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .preload span {
+    width: 10px;
+    height: 60px;
+    background: #ffffff;
+    margin: 0 1px;
+    animation: loading 800ms ease-in-out infinite;
+  }
+  .preload span:nth-child(1) {
+    background: #0497df;
+    animation-delay: -700ms;
+  }
+  .preload span:nth-child(2) {
+    background: #eade3d;
+    animation-delay: -600ms;
+  }
+  .preload span:nth-child(3) {
+    background: #55acee;
+    animation-delay: -500ms;
+  }
+  .preload span:nth-child(4) {
+    background: #ec902e;
+    animation-delay: -400ms;
+  }
+  .preload span:nth-child(5) {
+    background: rgba(214, 48, 49, 0.5);
+    animation-delay: -700ms;
+  }
+  .preload span:nth-child(6) {
+    background: rgba(253, 203, 110, 0.5);
+    animation-delay: -700ms;
+  }
+  @keyframes loading {
+    0%,60%,100% {
+      transform: scaleY(0.05);
+    }
+    35% {
+      transform: scale(1);
+    }
+  }
+
+
 /***
 MARK AS SOLD  */
 
 .ff__mark_sold {
-    background: #e74c3c;
-    padding: 6px 25px;
-    font-size: 2rem;
+    background: rgb(231, 76, 60, 0.8);
+    border-radius: 5px;
+    padding: 4px 25px;
+    font-size: 1.6rem;
     color: #ffffff;
-    width: 15%;
 }
 
 .hide {

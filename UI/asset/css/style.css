@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Adamina&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
 
 * {
   box-sizing: border-box;
@@ -9,12 +10,69 @@ body {
   padding: 0px;
   line-height: 1.5;
   background-color: #fefefe;
-  box-shadow: 0 15px 30px 0 rgba(31, 48, 146, 0.11);
 }
 
 html {
   font-size: 10px;
   line-height: 1.15;
+}
+
+/***
+***PRELOADER  */
+.preload {
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+.preload-finish {
+  opacity: 0;
+  pointer-events: none;
+}
+.preload span {
+  width: 10px;
+  height: 60px;
+  background: #ffffff;
+  margin: 0 1px;
+  animation: loading 800ms ease-in-out infinite;
+}
+.preload span:nth-child(1) {
+  background: #0497df;
+  animation-delay: -700ms;
+}
+.preload span:nth-child(2) {
+  background: #eade3d;
+  animation-delay: -600ms;
+}
+.preload span:nth-child(3) {
+  background: #55acee;
+  animation-delay: -500ms;
+}
+.preload span:nth-child(4) {
+  background: #ec902e;
+  animation-delay: -400ms;
+}
+.preload span:nth-child(5) {
+  background: rgba(214, 48, 49, 0.5);
+  animation-delay: -700ms;
+}
+.preload span:nth-child(6) {
+  background: rgba(253, 203, 110, 0.5);
+  animation-delay: -700ms;
+}
+@keyframes loading {
+  0%,60%,100% {
+    transform: scaleY(0.05);
+  }
+  35% {
+    transform: scale(1);
+  }
 }
 
 .container {
@@ -87,8 +145,8 @@ header nav ul li a:hover {
 }
 
 .logo-b {
-  border-radius: 50px;
-  padding: 10px;
+  border-radius: 50%;
+  padding: 13px;
   margin-left: 2px;
   margin-right: 2px;
   color: #ffffff;
@@ -129,8 +187,10 @@ header nav ul li a:hover {
 .search-container_cc {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
+  padding: 25px 0;
   margin: 20px 0;
+  background: #808080;
 }
 
 .search-container_cc .search__type {
@@ -194,25 +254,22 @@ header nav ul li a:hover {
 }
 
 .container__inner {
-  margin: 10px 1px 25px 1px;
-  /* margin-right: 5px; */
-  line-height: 1.7;
+  margin: 10px 10px;
+  line-height: 1.8;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.container__inner img {
-  width: 95%;
-  height: 300px;
+  box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, 0.15);
+  padding-bottom: 20px;
 }
 
 .brd-line {
-  padding-left: 5px;
-  padding-right: 2px;
-  margin-right: 5px;
   transition: transform 0.3s;
   position: relative;
 }
 
+.brd-line img {
+  width: 100%;
+  height: 270px;
+}
 .brd-line:hover {
   transform: scaleY(1.05);
   margin-bottom: 7px;
@@ -227,7 +284,7 @@ header nav ul li a:hover {
   padding: 5px;
   text-align: right;
   color: #ffffff;
-  width: 92.9%;
+  width: 100%;
   font-size: 1.4rem;
   position: absolute;
   top: 0px;
@@ -236,6 +293,7 @@ header nav ul li a:hover {
 .container__inner--rooms {
   display: flex;
   justify-content: center;
+  color: #808080;
 }
 
 .inner--sp {
@@ -246,17 +304,28 @@ header nav ul li a:hover {
   text-align: center;
   margin-top: 7px;
 }
+.inner-md > div {
+  color: #808080;
+}
+
+.main-txt {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-family: 'Adamina', serif;
+  margin-bottom: 15px;
+  color: #808080;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 .btn-view {
   background: rgb(30, 30, 30);
   padding: 10px 15px;
-  width: 20%;
   font-size: 1.3rem;
   font-family: "Arial";
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  margin-top: 5px;
   text-decoration: none;
 }
 
@@ -272,15 +341,17 @@ header nav ul li a:hover {
 
 .view-all-properties {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  margin: 50px 0;
 }
 
 .view-all-properties a {
   background: rgb(30, 30, 30);
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ffffff;
   border: none;
+  font-family: 'Satisfy', cursive;
   text-decoration: none;
 }
 
@@ -309,7 +380,6 @@ header nav ul li a:hover {
     transform: translate(-1px, 1px) rotate(-1deg);
   }
 }
-
 
 .view-ppty__btn:hover {
   cursor: pointer;
@@ -377,19 +447,16 @@ SIGNUP PAGE
  ****/
 .signup-container {
   margin-top: -5px;
-  /* display: flex; */
 }
 
 .first-qtr {
-  /* width: 36vw; */
   background-image: linear-gradient(105deg,
       rgba(255, 255, 255, 0.9) 0%,
       rgba(255, 255, 255, 0.9) 50%,
       transparent 50%),
     url(../images/signup.jpg);
   background-size: 100%;
-  /* background-repeat: no-repeat; */
-  height: 65rem;
+  height: 66rem;
   border-radius: 1px;
   box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, 0.15);
 }
@@ -410,7 +477,7 @@ SIGNUP PAGE
 .first-qtr__form .form__input,
 .login-wrapper .form__input {
   font-size: 1.5rem;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 2rem;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.5);
   border: none;
@@ -525,26 +592,24 @@ SIGNUP PAGE
 
 .flex__container__type_S {
   flex: 1;
-  margin-top: 50px;
-  background: rgb(255, 255, 255, 0.1);
+  margin-top: 40px;
 }
 
 .flex__container_title {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #0497df;
   text-align: center;
   margin: 20px 0;
+  font-family: "Adamina", serif;
   margin-top: 30px;
 }
 
 .flex__container_bx {
   line-height: 1.7;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 5px 5px 8px 5px;
-  box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, 0.15);
-  background: rgb(255, 255, 255, 0.1);
+  padding: 0px;
+  padding: 0 5px;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  margin-bottom: 20px;
 }
 
 .flex__container_img {
@@ -559,10 +624,11 @@ SIGNUP PAGE
 
 .flex__ppty_desc {
   display: flex;
+  box-shadow: 0 1.5rem 1rem rgb(30, 30, 30, 0.15);
 }
 
 .flex__ppty_fl {
-  background: #808080;
+  background: #0497df;
   color: #ffffff;
   padding: 10px;
   width: 60%;
@@ -572,6 +638,11 @@ SIGNUP PAGE
 
 .flex__ppty_desc-title {
   font-size: 2.4rem;
+  font-family: "Adamina", serif;
+  color: #0497df;
+}
+.flex__ppty_desc--feat span {
+  color: #808080;
 }
 
 .flex__ppty_desc span:nth-of-type(1) {
@@ -591,15 +662,16 @@ SIGNUP PAGE
 .flex__container_top {
   border-bottom: 1px solid #cccccc;
   padding: 10px;
+  font-family: "Adamina", serif;
 }
 
 .flex__pr {
-  font-size: 2rem;
+  font-size: 1.7rem;
   width: 290px;
 }
 
 .flex__container-icons {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .flex__container-hdr {
@@ -618,15 +690,32 @@ SIGNUP PAGE
   font-size: 1.6rem;
   padding-left: 10px;
 }
+.hdr-pr i,
+.flex__container-hdr span i {
+  padding-right: 8px;
+}
+.flex_container_mrg {
+  margin-top:15px;
+}
 
 .flex_container_S1 {
   padding: 20px;
-  background: #979797;
+  background: #0497df;
   margin: 30px;
   text-align: center;
   color: #ffffff;
   font-size: 1.6rem;
-  line-height: 1.6;
+  line-height: 1.8;
+}
+.flex_container_hdrs {
+  font-size: 1.5rem;
+  font-family: "Adamina", serif;
+}
+.flex_container_S1 i {
+  padding-right: 10px;
+}
+.flex__ppty_desc--feat {
+  width: 500px;
 }
 
 
@@ -638,14 +727,14 @@ A SPECIFIC PROPERTY  */
   text-align: center;
 }
 
-.txt-list-wrap {
+/* .txt-list-wrap {
   font-size: 2rem;
   margin-bottom: 4rem;
   text-align: center;
   text-transform: capitalize;
   font-family: "Adamina", serif;
   margin-top: 4rem;
-}
+} */
 
 
 /*****
@@ -790,13 +879,6 @@ MEDIA QUERIES  */
 
 }
 
-@media only screen and (max-width: 900px) {
-  .flex__container_top {
-    padding: 10px 30px;
-  }
-
-}
-
 @media only screen and (min-width: 1000px) {
   .container {
     padding: 1.6rem 0 3rem 0;
@@ -862,6 +944,12 @@ MEDIA QUERIES  */
   .flex-sp {
     padding-left: 30px;
   }
+  .flex__ppty_desc {
+    padding: 20px 40px;
+  }
+  .flex__container__type_S {
+    margin-top: 70px;
+  }
 
 }
 
@@ -872,7 +960,7 @@ MEDIA QUERIES  */
   }
 
   .flex__container_top {
-    padding: 10px 30px;
+    padding: 10px;
   }
 
   .flex__container-txt {
@@ -897,12 +985,20 @@ MEDIA QUERIES  */
   .flex-sp {
     padding-left: 30px;
   }
+  .flex__container__type_S {
+    margin-top: 70px;
+  }
 
-  .sp__ppty_img-sm {
+  /* .sp__ppty_img-sm {
     display: flex;
     width: 550px;
     height: 120px;
     margin-bottom: 5px;
+    border: 1px solid #0497df;
+    justify-content: center;
+  } */
+  .flex__ppty_desc {
+    padding: 20px 40px;
   }
 
   .signup-btn-lg {
