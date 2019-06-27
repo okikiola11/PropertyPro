@@ -1,12 +1,12 @@
-const navTrigger = document.querySelector('.nav-trigger');
-const sideNav = document.querySelector('.side-nav');
-const soldDiv = document.querySelector('.main-content__sold');
-const markDiv = document.querySelector('.list-icons__sp:nth-of-type(2)')
+const navTrigger = document.querySelector(".nav-trigger");
+const sideNav = document.querySelector(".side-nav");
+const soldDiv = document.querySelector(".main-content__sold");
+const markDiv = document.querySelector(".list-icons__sp:nth-of-type(2)");
 //const hideShow = document.querySelector('.main-content__cc');
-const load = document.querySelectorAll('.main-content__lintin-wrapper');
+const load = document.querySelectorAll(".main-content__lintin-wrapper");
 
-navTrigger.addEventListener('click', () => {
-    sideNav.classList.toggle('visible');
+navTrigger.addEventListener("click", () => {
+  sideNav.classList.toggle("visible");
 });
 
 // load.addEventListener('click', (e) => {
@@ -20,8 +20,8 @@ navTrigger.addEventListener('click', () => {
 //     //soldDiv.classList.add(hide);
 // })
 
-markDiv.addEventListener('click', (e) => {
-    e.preventDefault();
+markDiv.addEventListener("click", e => {
+  e.preventDefault();
 
-    soldDiv.classList.remove('hide');
-})
+  soldDiv.classList.remove("hide");
+});
