@@ -1,19 +1,36 @@
-import express from "express";
-import bodyParser from "body-parser";
-const app = express();
-app.use(bodyParser.urlencoded({
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _express = _interopRequireDefault(require("express"));
+
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+
+var _userRoutes = _interopRequireDefault(require("./routes/userRoutes"));
+
+var app = (0, _express["default"])();
+app.use(_bodyParser["default"].urlencoded({
   extended: false
 }));
-app.use(bodyParser.json());
-app.get("/", (req, res) => res.send("Welcome, to Propertypro Lite!"));
-app.all("*", (req, res) => {
+app.use(_bodyParser["default"].json());
+app.get('/', function (req, res) {
+  return res.send('Welcome to Propertypro Lite!');
+});
+app.use('/api/v1/auth', _userRoutes["default"]);
+app.all('*', function (req, res) {
   res.status(404).json({
     status: 404,
-    message: "The endpoint you have requested does not exist on this server"
+    message: 'The endpoint you have requested does not exist on this server'
   });
 });
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(` Server is running on PORT: ${port}`);
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log(" Server is running on PORT: ".concat(port));
 });
-export default app;
+var _default = app;
+exports["default"] = _default;
