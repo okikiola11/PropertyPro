@@ -14,6 +14,20 @@ Property Pro Lite is a platform where people can create and/or search properties
 - User can view all properties of a specific type - 2 bedroom, 3 bedroom, mini flat etc.
 - User can view a specific property advert.
 
+## Endpoints
+
+| HTTP Verb       | Endpoints                                 |
+| --------------- | ----------------------------------------- |
+| `POST request`  | api/v1/auth/signup                        |
+| `POST request`  | api/v1/auth/signin                        |
+| `POST request`  | api/v1/property                           |
+| `GET type`      | api/v1//property/:property-id?type        |
+| `GET single`    | api/v1/property/:property-id              |
+| `PATCH request` | api/v1/property/:property-id              |
+| `PATCH sold`    | api/v1/property/:property-id/sold         |
+| `DELETE`        | api/v1/property/:property-id              |
+
+
 ## Clone the Repo
 
 https://github.com/okikiola11/PropertyPro
@@ -21,7 +35,6 @@ https://github.com/okikiola11/PropertyPro
 ## Github Pages
 
 - https://okikiola11.github.io/PropertyPro/UI/index.html
-- https://okikiola11.github.io/PropertyPro/UI/user-dashboard.html
 
 ## Prerequisites
 

@@ -118,7 +118,7 @@ span:after {
     /* border-bottom: 1px solid #333333; */
 }
 
-.side-nav ul li.active:before {
+/* .side-nav ul li.active:before {
     content: "";
     position: absolute;
     width: 4px;
@@ -127,6 +127,13 @@ span:after {
     top: 0;
     left: 0;
     background-color: #fff;
+} */
+.side-nav ul li.active {
+    color: #0497df;
+    background-color: #dfe6e9;
+    transition: color 250ms ease-in-out;
+    background-color: 250ms ease-in-out;
+    border-left: 4px solid #0497df;
 }
 
 .side-nav ul li a {
