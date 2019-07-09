@@ -43,6 +43,7 @@ class UserController {
         }
       });
     } catch (error) {
+      console.log(error.stack);
       return res.status(500).json({
         status: '500 Server internal error',
         error: 'Something went wrong while trying to create a user'

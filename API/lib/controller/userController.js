@@ -83,12 +83,13 @@ function () {
               case 13:
                 _context.prev = 13;
                 _context.t0 = _context["catch"](0);
+                console.log(_context.t0.stack);
                 return _context.abrupt("return", res.status(500).json({
                   status: '500 Server internal error',
                   error: 'Something went wrong while trying to create a user'
                 }));
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }

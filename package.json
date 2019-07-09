@@ -7,8 +7,7 @@
     "start": "node ./API/lib/index.js",
     "dev": "nodemon --exec babel-node ./API/src/index.js",
     "build": "babel ./API/src -d ./API/lib",
-    "test": "mocha ./API/lib/test/*.test.js",
-    "test:dev": "mocha ./API/src/test/*.test.js"
+    "test": "mocha ./API/lib/test/*.test.js"
   },
   "repository": {
     "type": "git",
