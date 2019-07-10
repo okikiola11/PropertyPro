@@ -36,7 +36,7 @@ function () {
       var _signupUser = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee(req, res) {
-        var _req$body, first_name, last_name, email, password, phoneNumber, address, hashedPassword, _getUserID, is_admin, user, token;
+        var _req$body, first_name, last_name, email, password, phoneNumber, address, hashedPassword, getUserID, is_admin, user, token;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
@@ -49,10 +49,10 @@ function () {
 
               case 4:
                 hashedPassword = _context.sent;
-                _getUserID = _userData["default"][_userData["default"].length - 1].id + 1;
+                getUserID = _userData["default"][_userData["default"].length - 1].id + 1;
                 is_admin = false;
                 user = {
-                  id: _getUserID,
+                  id: getUserID,
                   first_name: first_name,
                   last_name: last_name,
                   email: email,
@@ -65,7 +65,7 @@ function () {
                 _userData["default"].push(user);
 
                 token = _authMiddleware["default"].generateToken({
-                  id: _getUserID,
+                  id: getUserID,
                   is_admin: is_admin
                 });
                 return _context.abrupt("return", res.status(201).json({
@@ -73,7 +73,7 @@ function () {
                   message: 'New user has been created',
                   data: {
                     token: token,
-                    id: _getUserID,
+                    id: getUserID,
                     first_name: first_name,
                     last_name: last_name,
                     email: email,
@@ -110,7 +110,7 @@ function () {
       var _signinUser = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee2(req, res) {
-        var _req$body2, email, password, user, passwordIsValid, id, is_admin, first_name, last_name, phoneNumber, token;
+        var _req$body2, email, password, user, passwordIsValid, id, is_admin, first_name, last_name, token;
 
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
@@ -127,7 +127,7 @@ function () {
                   break;
                 }
 
-                return _context2.abrupt("return", res.status(404).send('No user found.'));
+                return _context2.abrupt("return", res.status('401 Unauthorized').send('No user found.'));
 
               case 5:
                 _context2.next = 7;
@@ -142,12 +142,12 @@ function () {
                 }
 
                 return _context2.abrupt("return", res.status(401).json({
-                  status: 401,
+                  status: 'Unauthorized',
                   message: 'Incorrect Password'
                 }));
 
               case 10:
-                id = user.id, is_admin = user.is_admin, first_name = user.first_name, last_name = user.last_name, phoneNumber = user.phoneNumber;
+                id = user.id, is_admin = user.is_admin, first_name = user.first_name, last_name = user.last_name;
                 token = _authMiddleware["default"].generateToken({
                   id: id,
                   is_admin: is_admin
@@ -157,11 +157,10 @@ function () {
                   message: "Welcome ".concat(user.email, ", you have successfully logged in"),
                   data: {
                     token: token,
-                    id: getUserID,
+                    id: id,
                     first_name: first_name,
                     last_name: last_name,
                     email: email,
-                    phoneNumber: phoneNumber,
                     is_admin: is_admin
                   }
                 }));
@@ -169,13 +168,12 @@ function () {
               case 15:
                 _context2.prev = 15;
                 _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0.stack);
-                return _context2.abrupt("return", res.status(404).json({
-                  status: 'error',
-                  message: 'User record does not exist'
+                return _context2.abrupt("return", res.status(500).json({
+                  status: 'Server internal error',
+                  message: 'Something went wrong while trying to process your request'
                 }));
 
-              case 19:
+              case 18:
               case "end":
                 return _context2.stop();
             }

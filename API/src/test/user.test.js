@@ -99,3 +99,48 @@ describe('/ User Auth Signup Endpoint ', () => {
     });
   });
 });
+
+describe('/ User Auth Signin Endpoint ', () => {
+  describe('/ POST user login ', () => {
+    it("POST /auth/signin - User Can't login with incorrect password", done => {
+      request(app)
+        .post(`${API_PREFIX}/auth/signin`)
+        .send({
+          email: 'user@gmail.com',
+          password: 'okiki111'
+        })
+        .expect(401)
+        .expect(response => {
+          expect(response.body.status).to.equal('Unauthorized');
+          expect(response.body.message).to.equal('Incorrect Password');
+        })
+        .end(done);
+    });
+
+    it('should allow a user to signin after signing up ', done => {
+      request(app)
+        .post(`${API_PREFIX}/auth/signin`)
+        .set('Accept', 'application/json')
+        .send({
+          email: 'user@gmail.com',
+          password: 'okiki123'
+        })
+        .expect(200)
+        .expect(response => {
+          expect(response.body.status).to.equal('success');
+          expect(response.body.message).to.equal(
+            'Welcome user@gmail.com, you have successfully logged in'
+          );
+          expect(response.body.data).to.have.all.keys(
+            'token',
+            'id',
+            'first_name',
+            'last_name',
+            'email',
+            'is_admin'
+          );
+        })
+        .end(done);
+    });
+  });
+});
