@@ -55,7 +55,6 @@ describe('/ User Auth Signup Endpoint ', function () {
         address: '2a, 2nd street Osborne estate Ikoyi',
         is_admin: false
       }).expect(201).expect(function (response) {
-        console.log(response.data);
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('New user has been created');
         expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phoneNumber', 'address');
