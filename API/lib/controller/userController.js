@@ -148,6 +148,7 @@ function () {
 
               case 10:
                 id = user.id, is_admin = user.is_admin, first_name = user.first_name, last_name = user.last_name;
+                console.log(user);
                 token = _authMiddleware["default"].generateToken({
                   id: id,
                   is_admin: is_admin
@@ -165,20 +166,20 @@ function () {
                   }
                 }));
 
-              case 15:
-                _context2.prev = 15;
+              case 16:
+                _context2.prev = 16;
                 _context2.t0 = _context2["catch"](0);
                 return _context2.abrupt("return", res.status(500).json({
                   status: 'Server internal error',
                   message: 'Something went wrong while trying to process your request'
                 }));
 
-              case 18:
+              case 19:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 15]]);
+        }, _callee2, null, [[0, 16]]);
       }));
 
       function signinUser(_x3, _x4) {
