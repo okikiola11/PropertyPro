@@ -11,5 +11,11 @@ router.post(
   uploader,
   PropertyController.postProperty
 );
+router.patch(
+  '/:id',
+  AuthMiddleware.verifyToken,
+  uploader,
+  PropertyController.updateProperty
+);
 
 export default router;

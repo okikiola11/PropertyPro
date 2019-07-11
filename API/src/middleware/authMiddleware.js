@@ -18,7 +18,6 @@ class AuthMiddleware {
         });
       const decoded = jwt.verify(token, process.env.SECRET);
       const { id, is_admin } = decoded;
-      console.log(decoded);
       req.auth = { id, is_admin };
 
       next();
