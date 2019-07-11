@@ -46,7 +46,6 @@ class PropertyController {
   static async updateProperty(req, res) {
     try {
       const { id } = req.params;
-      console.log(id);
       const { price, state, city, address, type, status } = req.body;
       const property = Property.find(propId => propId.id === parseInt(id, 10));
       if (!property) {
@@ -80,7 +79,6 @@ class PropertyController {
       const index = Property.findIndex(
         propId => propId.id === parseInt(id, 10)
       );
-      console.log(index);
       Property.splice(index, 1, updatedProperty);
       return res.status(200).json({
         status: 'success',
@@ -88,10 +86,24 @@ class PropertyController {
         data: [updatedProperty]
       });
     } catch (error) {
-      console.log(error.stack);
       return res.status(500).json({
         status: 'internal server error',
         error: 'Something went wrong while trying to update your property'
+      });
+    }
+  }
+
+  static async getAllProperties(req, res) {
+    try {
+      return res.status(200).send({
+        status: 'success',
+        message: 'Successfully retrieved all properties',
+        data: [Property]
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: 404,
+        error: 'No property found'
       });
     }
   }
