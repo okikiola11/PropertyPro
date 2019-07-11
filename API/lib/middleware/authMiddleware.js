@@ -34,6 +34,32 @@ function () {
         expiresIn: '24h'
       });
     }
+  }, {
+    key: "verifyToken",
+    value: function verifyToken(req, res, next) {
+      try {
+        var token = req.headers.authorization;
+        if (!token) return res.status(401).json({
+          status: 'Unauthorized',
+          error: 'Token is required'
+        });
+
+        var decoded = _jsonwebtoken["default"].verify(token, process.env.SECRET);
+
+        var id = decoded.id,
+            is_admin = decoded.is_admin;
+        req.auth = {
+          id: id,
+          is_admin: is_admin
+        };
+        next();
+      } catch (err) {
+        return res.status(401).json({
+          status: 'Unauthorized',
+          error: 'Token is invalid'
+        });
+      }
+    }
   }]);
   return AuthMiddleware;
 }();

@@ -13,6 +13,8 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _userRoutes = _interopRequireDefault(require("./routes/userRoutes"));
 
+var _propertyRoutes = _interopRequireDefault(require("./routes/propertyRoutes"));
+
 var app = (0, _express["default"])();
 app.use(_bodyParser["default"].urlencoded({
   extended: false
@@ -22,6 +24,7 @@ app.get('/', function (req, res) {
   return res.send('Welcome to Propertypro Lite!');
 });
 app.use('/api/v1/auth', _userRoutes["default"]);
+app.use('api/v1/property', _propertyRoutes["default"]);
 app.all('*', function (req, res) {
   res.status(404).json({
     status: 404,

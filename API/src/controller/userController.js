@@ -29,7 +29,7 @@ class UserController {
         is_admin
       };
       User.push(user);
-      const token = authMiddleware.generateToken({ id: getUserID, is_admin });
+      const token = authMiddleware.generateToken(getUserID, is_admin);
       return res.status(201).json({
         status: 'success',
         message: 'New user has been created',
@@ -66,8 +66,7 @@ class UserController {
         });
       }
       const { id, is_admin, first_name, last_name } = user;
-
-      const token = authMiddleware.generateToken({ id, is_admin });
+      const token = authMiddleware.generateToken(id, is_admin);
       return res.status(200).json({
         status: 'success',
         message: `Welcome ${user.email}, you have successfully logged in`,
