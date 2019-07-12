@@ -24,5 +24,6 @@ router.get(
   uploader,
   PropertyController.getSingleProperty
 );
+router.delete('/:id', PropertyController.deleteProperty);
 
 export default router;
