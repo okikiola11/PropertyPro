@@ -17,11 +17,12 @@ router.patch(
   uploader,
   PropertyController.updateProperty
 );
+router.get('/', PropertyController.getAllProperties);
 router.get(
-  '/',
+  '/:id',
   AuthMiddleware.verifyToken,
   uploader,
-  PropertyController.getAllProperties
+  PropertyController.getSingleProperty
 );
 
 export default router;
