@@ -7,6 +7,7 @@ class PropertyController {
     try {
       const { price, state, city, address, type } = req.body;
       const { id: owner } = req.auth; //get owner ID from user table
+
       const {
         public_id: image_id,
         url: image_url,
@@ -36,6 +37,7 @@ class PropertyController {
         data: [newlyCreatedProperty]
       });
     } catch (error) {
+      console.log(error.stack);
       return res.status(500).json({
         status: 'Server internal error',
         error: 'Something went wrong while trying to create a property advert'
@@ -83,7 +85,7 @@ class PropertyController {
       return res.status(200).json({
         status: 'success',
         success: 'Property has being created successfully',
-        data: [updatedProperty]
+        data: updatedProperty
       });
     } catch (error) {
       return res.status(500).json({
@@ -95,15 +97,101 @@ class PropertyController {
 
   static async getAllProperties(req, res) {
     try {
+      const allProperties = Property.map(property => {
+        const {
+          id,
+          status,
+          price,
+          state,
+          city,
+          address,
+          type,
+          created_on,
+          image_url,
+          owner
+        } = property;
+        const {
+          email: ownerEmail,
+          phoneNumber: ownerPhoneNumber
+        } = userData.find(({ id: propertyId }) => propertyId === owner);
+        return {
+          id,
+          status,
+          price,
+          state,
+          city,
+          address,
+          type,
+          created_on,
+          image_url,
+          ownerEmail,
+          ownerPhoneNumber
+        };
+      });
       return res.status(200).send({
         status: 'success',
         message: 'Successfully retrieved all properties',
-        data: [Property]
+        data: allProperties
       });
     } catch (error) {
       return res.status(404).json({
         status: 404,
         error: 'No property found'
+      });
+    }
+  }
+
+  static async getSingleProperty(req, res) {
+    try {
+      const id = parseInt(req.params.id, 10);
+      const singleProperty = Property.find(
+        getProperty => getProperty.id === id
+      );
+      if (!singleProperty) {
+        return res.status(404).json({
+          status: 'Not found',
+          error: 'Property Id not found'
+        });
+      }
+      const {
+        id: currentId,
+        status,
+        price,
+        state,
+        city,
+        address,
+        type,
+        created_on,
+        image_url,
+        owner
+      } = singleProperty;
+      const {
+        email: ownerEmail,
+        phoneNumber: ownerPhoneNumber
+      } = userData.find(({ id: propertyId }) => propertyId === owner);
+      const newProperty = {
+        id: currentId,
+        status,
+        price,
+        state,
+        city,
+        address,
+        type,
+        created_on,
+        image_url,
+        ownerEmail,
+        ownerPhoneNumber
+      };
+
+      return res.status(200).json({
+        status: 200,
+        message: 'Account has been successfully retrieved',
+        data: newProperty
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: 'Not found',
+        error: 'Property does not exist'
       });
     }
   }
