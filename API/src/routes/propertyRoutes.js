@@ -20,6 +20,7 @@ router.patch(
   PropertyController.updateProperty
 );
 router.patch('/:id/sold', PropertyController.markSoldProperty);
+
 router.delete('/:id', PropertyController.deleteProperty);
 
 export default router;

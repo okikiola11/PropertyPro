@@ -243,6 +243,13 @@ class PropertyController {
     }
   }
 
+  // static async getPropertyType(req, res) {
+  //   try {
+  //     const { type } = req.query;
+  //     const id = parseInt(req.params.id, 10);
+  //   } catch (error) {}
+  // }
+
   static async deleteProperty(req, res) {
     try {
       const id = parseInt(req.params.id, 10);

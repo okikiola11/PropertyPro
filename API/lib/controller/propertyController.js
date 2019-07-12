@@ -150,7 +150,7 @@ function () {
 
                 return _context2.abrupt("return", res.status(200).json({
                   status: 'success',
-                  success: 'Property has being created successfully',
+                  success: 'Property has being updated successfully',
                   data: updatedProperty
                 }));
 
@@ -298,7 +298,7 @@ function () {
                 };
                 return _context4.abrupt("return", res.status(200).json({
                   status: 200,
-                  message: 'Account has been successfully retrieved',
+                  message: 'Property has been successfully retrieved',
                   data: newProperty
                 }));
 
@@ -325,23 +325,23 @@ function () {
       return getSingleProperty;
     }()
   }, {
-    key: "deleteProperty",
+    key: "markSoldProperty",
     value: function () {
-      var _deleteProperty = (0, _asyncToGenerator2["default"])(
+      var _markSoldProperty = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee5(req, res) {
-        var id, index;
+        var id, getProperty, newlyCreatedPropertyDetails, indexValue;
         return _regenerator["default"].wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.prev = 0;
                 id = parseInt(req.params.id, 10);
-                index = _propertyData["default"].findIndex(function (deletedData) {
-                  return deletedData.id === id;
+                getProperty = _propertyData["default"].find(function (findPropId) {
+                  return findPropId.id === id;
                 });
 
-                if (index) {
+                if (getProperty) {
                   _context5.next = 5;
                   break;
                 }
@@ -352,30 +352,120 @@ function () {
                 }));
 
               case 5:
-                _propertyData["default"].splice(index, 1);
+                newlyCreatedPropertyDetails = {
+                  id: getProperty.id,
+                  status: 'sold',
+                  owner: getProperty.owner,
+                  type: getProperty.type,
+                  state: getProperty.state,
+                  city: getProperty.city,
+                  address: getProperty.address,
+                  price: getProperty.price,
+                  created_on: getProperty.created_on,
+                  image_url: getProperty.image_url
+                };
+                indexValue = _propertyData["default"].findIndex(function (propIndex) {
+                  return propIndex.id === id;
+                });
+
+                _propertyData["default"].splice(indexValue, 1, newlyCreatedPropertyDetails);
 
                 return _context5.abrupt("return", res.status(200).json({
+                  status: 'success',
+                  success: 'Property has being updated successfully',
+                  data: {
+                    id: id,
+                    status: 'sold',
+                    type: getProperty.type,
+                    state: getProperty.state,
+                    city: getProperty.city,
+                    address: getProperty.address,
+                    price: getProperty.price,
+                    created_on: getProperty.created_on,
+                    image_url: getProperty.image_url
+                  }
+                }));
+
+              case 11:
+                _context5.prev = 11;
+                _context5.t0 = _context5["catch"](0);
+                return _context5.abrupt("return", res.status(500).json({
+                  status: 'internal server error',
+                  error: 'Something went wrong while trying to update your property'
+                }));
+
+              case 14:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 11]]);
+      }));
+
+      function markSoldProperty(_x9, _x10) {
+        return _markSoldProperty.apply(this, arguments);
+      }
+
+      return markSoldProperty;
+    }() // static async getPropertyType(req, res) {
+    //   try {
+    //     const { type } = req.query;
+    //     const id = parseInt(req.params.id, 10);
+    //   } catch (error) {}
+    // }
+
+  }, {
+    key: "deleteProperty",
+    value: function () {
+      var _deleteProperty = (0, _asyncToGenerator2["default"])(
+      /*#__PURE__*/
+      _regenerator["default"].mark(function _callee6(req, res) {
+        var id, index;
+        return _regenerator["default"].wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                id = parseInt(req.params.id, 10);
+                index = _propertyData["default"].findIndex(function (deletedData) {
+                  return deletedData.id === id;
+                });
+
+                if (index) {
+                  _context6.next = 5;
+                  break;
+                }
+
+                return _context6.abrupt("return", res.status(404).json({
+                  status: 'Not found',
+                  error: 'Oooops! no record with such Property Id'
+                }));
+
+              case 5:
+                _propertyData["default"].splice(index, 1);
+
+                return _context6.abrupt("return", res.status(200).json({
                   status: 'success',
                   message: 'Property has been deleted successfully'
                 }));
 
               case 9:
-                _context5.prev = 9;
-                _context5.t0 = _context5["catch"](0);
-                return _context5.abrupt("return", res.status(500).send({
+                _context6.prev = 9;
+                _context6.t0 = _context6["catch"](0);
+                return _context6.abrupt("return", res.status(500).send({
                   status: 'Server internal error',
                   error: 'Something went wrong while trying to delete the property, try again'
                 }));
 
               case 12:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, null, [[0, 9]]);
+        }, _callee6, null, [[0, 9]]);
       }));
 
-      function deleteProperty(_x9, _x10) {
+      function deleteProperty(_x11, _x12) {
         return _deleteProperty.apply(this, arguments);
       }
 

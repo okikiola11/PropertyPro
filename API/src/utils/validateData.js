@@ -40,6 +40,7 @@ const states = [
 
 const type = [
   'Mini Flat',
+  'Studio Flat',
   '2 Bedroom',
   '3 Bedroom',
   'Duplex',
