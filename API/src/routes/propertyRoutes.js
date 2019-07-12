@@ -5,6 +5,8 @@ import AuthMiddleware from '../middleware/authMiddleware';
 
 const router = Router();
 
+router.get('/', PropertyController.getAllProperties);
+router.get('/:id', PropertyController.getSingleProperty);
 router.post(
   '/',
   AuthMiddleware.verifyToken,
@@ -17,13 +19,7 @@ router.patch(
   uploader,
   PropertyController.updateProperty
 );
-router.get('/', PropertyController.getAllProperties);
-router.get(
-  '/:id',
-  AuthMiddleware.verifyToken,
-  uploader,
-  PropertyController.getSingleProperty
-);
+router.patch('/:id/sold', PropertyController.markSoldProperty);
 router.delete('/:id', PropertyController.deleteProperty);
 
 export default router;
