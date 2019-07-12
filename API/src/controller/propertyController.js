@@ -83,7 +83,7 @@ class PropertyController {
       Property.splice(index, 1, updatedProperty);
       return res.status(200).json({
         status: 'success',
-        success: 'Property has being created successfully',
+        success: 'Property has being updated successfully',
         data: updatedProperty
       });
     } catch (error) {
@@ -184,13 +184,61 @@ class PropertyController {
 
       return res.status(200).json({
         status: 200,
-        message: 'Account has been successfully retrieved',
+        message: 'Property has been successfully retrieved',
         data: newProperty
       });
     } catch (error) {
       return res.status(404).json({
         status: 'Not found',
         error: 'Property does not exist'
+      });
+    }
+  }
+
+  static async markSoldProperty(req, res) {
+    try {
+      const id = parseInt(req.params.id, 10);
+
+      const getProperty = Property.find(findPropId => findPropId.id === id);
+      if (!getProperty) {
+        return res.status(404).json({
+          status: 'Not found',
+          error: 'Oooops! no record with such Property Id'
+        });
+      }
+      const newlyCreatedPropertyDetails = {
+        id: getProperty.id,
+        status: 'sold',
+        owner: getProperty.owner,
+        type: getProperty.type,
+        state: getProperty.state,
+        city: getProperty.city,
+        address: getProperty.address,
+        price: getProperty.price,
+        created_on: getProperty.created_on,
+        image_url: getProperty.image_url
+      };
+      const indexValue = Property.findIndex(propIndex => propIndex.id === id);
+      Property.splice(indexValue, 1, newlyCreatedPropertyDetails);
+      return res.status(200).json({
+        status: 'success',
+        success: 'Property has being updated successfully',
+        data: {
+          id,
+          status: 'sold',
+          type: getProperty.type,
+          state: getProperty.state,
+          city: getProperty.city,
+          address: getProperty.address,
+          price: getProperty.price,
+          created_on: getProperty.created_on,
+          image_url: getProperty.image_url
+        }
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 'internal server error',
+        error: 'Something went wrong while trying to update your property'
       });
     }
   }
