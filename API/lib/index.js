@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
   return res.send('Welcome to Propertypro Lite!');
 });
 app.use('/api/v1/auth', _userRoutes["default"]);
-app.use('api/v1/property', _propertyRoutes["default"]);
+app.use('/api/v1/property', _propertyRoutes["default"]);
 app.all('*', function (req, res) {
   res.status(404).json({
     status: 404,

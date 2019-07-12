@@ -64,10 +64,7 @@ function () {
 
                 _userData["default"].push(user);
 
-                token = _authMiddleware["default"].generateToken({
-                  id: getUserID,
-                  is_admin: is_admin
-                });
+                token = _authMiddleware["default"].generateToken(getUserID, is_admin);
                 return _context.abrupt("return", res.status(201).json({
                   status: 'success',
                   message: 'New user has been created',
@@ -148,11 +145,7 @@ function () {
 
               case 10:
                 id = user.id, is_admin = user.is_admin, first_name = user.first_name, last_name = user.last_name;
-                console.log(user);
-                token = _authMiddleware["default"].generateToken({
-                  id: id,
-                  is_admin: is_admin
-                });
+                token = _authMiddleware["default"].generateToken(id, is_admin);
                 return _context2.abrupt("return", res.status(200).json({
                   status: 'success',
                   message: "Welcome ".concat(user.email, ", you have successfully logged in"),
@@ -166,20 +159,20 @@ function () {
                   }
                 }));
 
-              case 16:
-                _context2.prev = 16;
+              case 15:
+                _context2.prev = 15;
                 _context2.t0 = _context2["catch"](0);
                 return _context2.abrupt("return", res.status(500).json({
                   status: 'Server internal error',
                   message: 'Something went wrong while trying to process your request'
                 }));
 
-              case 19:
+              case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 16]]);
+        }, _callee2, null, [[0, 15]]);
       }));
 
       function signinUser(_x3, _x4) {
