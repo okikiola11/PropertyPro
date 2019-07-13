@@ -10,6 +10,11 @@ router.post(
   Validator.getValidationResult,
   UserController.signupUser
 );
-router.post('/signin', UserController.signinUser);
+router.post(
+  '/signin',
+  Validator.validateSignIn(),
+  Validator.getValidationResult,
+  UserController.signinUser
+);
 
 export default router;
