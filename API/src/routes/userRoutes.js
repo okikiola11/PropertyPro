@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Validator from '../utils/validator';
+import Validator from '../middleware/validator';
 import UserController from '../controller/userController';
 
 const router = Router();
@@ -10,6 +10,11 @@ router.post(
   Validator.getValidationResult,
   UserController.signupUser
 );
-router.post('/signin', UserController.signinUser);
+router.post(
+  '/signin',
+  Validator.validateSignIn(),
+  Validator.getValidationResult,
+  UserController.signinUser
+);
 
 export default router;
