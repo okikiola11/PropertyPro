@@ -14,8 +14,8 @@ router.post(
 
 router.post(
   '/signin',
-  // Validator.validateSignIn(),
-  // Validator.validateResult,
+  Validator.validateSignIn(),
+  Validate.validateResult,
   UserController.signinUser
 );
 
