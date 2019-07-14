@@ -1,42 +1,31 @@
 import cloud from '../utils/cloudinaryConfig';
 import userData from '../utils/userData';
-import Property from '../utils/propertyData';
+import Property from '../model/propertyModel';
 
 class PropertyController {
   static async postProperty(req, res) {
     try {
-      const { price, state, city, address, type } = req.body;
-      const { id: owner } = req.auth; //get owner ID from user table
-
-      const {
-        public_id: image_id,
-        url: image_url,
-        originalname: image_name
-      } = req.file;
+      const { price, state, city, address, type, image_url } = req.body;
+      const { id } = req.auth; //get owner ID from user table
 
       const newPrice = parseFloat(price);
-      const newlyCreatedProperty = {
-        id: Property[Property.length - 1].id + 1,
-        owner,
-        price: newPrice,
+      const newProperty = await Property.SaveProperty(
+        id,
+        price,
         state,
         city,
         address,
         type,
-        status: 'available',
-        created_on: new Date().toLocaleString(),
-        image_url,
-        image_id,
-        image_name
-      };
-      Property.push(newlyCreatedProperty);
+        image_url
+      );
 
       return res.status(201).json({
         status: 'success',
         message: 'Property advert has been created',
-        data: [newlyCreatedProperty]
+        data: newProperty
       });
     } catch (error) {
+      console.log(error.stack);
       return res.status(500).json({
         status: 'Server internal error',
         error: 'Something went wrong while trying to create a property advert'

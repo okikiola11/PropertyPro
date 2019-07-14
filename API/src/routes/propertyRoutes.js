@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import PropertyController from '../controller/propertyController';
-import uploader from '../middleware/multer';
 import AuthMiddleware from '../middleware/authMiddleware';
 import Validator from '../middleware/validator';
+import Validate from '../middleware/validateResult';
 
 const router = Router();
 
@@ -10,16 +10,15 @@ router.get('/', PropertyController.getAllProperties);
 router.get('/:id', PropertyController.getSingleProperty);
 router.post(
   '/',
-  // Validator.validatePostProperty(),
-  // Validator.getValidationResult,
+  Validator.validatePostProperty(),
+  Validate.validateResult,
   AuthMiddleware.verifyToken,
-  uploader,
   PropertyController.postProperty
 );
 router.patch(
   '/:id',
-  AuthMiddleware.verifyToken,
-  uploader,
+  // AuthMiddleware.verifyToken,
+  // uploader,
   PropertyController.updateProperty
 );
 router.patch('/:id/sold', PropertyController.markSoldProperty);
