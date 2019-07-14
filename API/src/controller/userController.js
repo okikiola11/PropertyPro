@@ -15,7 +15,6 @@ class UserController {
         address,
         is_admin
       } = req.body;
-      console.log('am here');
       const member = await User.findByEmail(email);
       if (member) {
         return res.status(409).json({
@@ -25,7 +24,7 @@ class UserController {
       }
 
       const hashed_password = await helper.hashPassword(password);
-      const userAgent = await User.SaveUser(
+      const user = await User.SaveUser(
         first_name,
         last_name,
         email,
@@ -34,8 +33,7 @@ class UserController {
         address,
         is_admin || false
       );
-      console.log('am here 2');
-      const { id } = userAgent;
+      const { id } = user;
 
       const token = authMiddleware.generateToken(id, is_admin);
       return res.status(201).json({
@@ -62,15 +60,21 @@ class UserController {
   static async signinUser(req, res) {
     try {
       const { email, password } = req.body;
-      const user = User.find(member => member.email === email);
+      const user = await User.findByEmail(email);
       if (!user) {
-        return res.status('401 Unauthorized').send('No user found.');
+        return res.status(404).json({
+          status: 'error',
+          error: 'User not found'
+        });
       }
-      const passwordIsValid = await bcrypt.compare(password, user.password);
+      const passwordIsValid = await bcrypt.compare(
+        password,
+        user.hashed_password
+      );
       if (!passwordIsValid) {
         return res.status(401).json({
           status: 'Unauthorized',
-          message: 'Incorrect Password'
+          error: 'Incorrect Password'
         });
       }
       const { id, is_admin, first_name, last_name } = user;
@@ -83,14 +87,13 @@ class UserController {
           id,
           first_name,
           last_name,
-          email,
-          is_admin
+          email
         }
       });
     } catch (error) {
       return res.status(500).json({
         status: 'Server internal error',
-        message: 'Something went wrong while trying to process your request'
+        error: 'Something went wrong while trying to process your request'
       });
     }
   }
