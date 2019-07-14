@@ -36,7 +36,7 @@ function () {
       var _signupUser = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee(req, res) {
-        var _req$body, first_name, last_name, email, password, phone_number, address, hashedPassword, getUserID, is_admin, user, token;
+        var _req$body, first_name, last_name, email, password, phone_number, address, hashed_password, getUserID, is_admin, user, token;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
@@ -48,7 +48,7 @@ function () {
                 return _helper["default"].hashPassword(password);
 
               case 4:
-                hashedPassword = _context.sent;
+                hashed_password = _context.sent;
                 getUserID = _userData["default"][_userData["default"].length - 1].id + 1;
                 is_admin = false;
                 user = {
@@ -56,7 +56,7 @@ function () {
                   first_name: first_name,
                   last_name: last_name,
                   email: email,
-                  password: hashedPassword,
+                  password: hashed_password,
                   phone_number: phone_number,
                   address: address,
                   is_admin: is_admin

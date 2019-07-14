@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import helper from '../utils/helper';
-import User from '../utils/userData';
+import User from '../model/userModel';
 import authMiddleware from '../middleware/authMiddleware';
 
 class UserController {
@@ -12,30 +12,38 @@ class UserController {
         email,
         password,
         phone_number,
-        address
+        address,
+        is_admin
       } = req.body;
-      const hashedPassword = await helper.hashPassword(password);
-      const getUserID = User[User.length - 1].id + 1;
+      console.log('am here');
+      const member = await User.findByEmail(email);
+      if (member) {
+        return res.status(409).json({
+          status: 'Conflict',
+          error: 'Email already exist'
+        });
+      }
 
-      const is_admin = false;
-      const user = {
-        id: getUserID,
+      const hashed_password = await helper.hashPassword(password);
+      const userAgent = await User.SaveUser(
         first_name,
         last_name,
         email,
-        password: hashedPassword,
+        hashed_password,
         phone_number,
         address,
-        is_admin
-      };
-      User.push(user);
-      const token = authMiddleware.generateToken(getUserID, is_admin);
+        is_admin || false
+      );
+      console.log('am here 2');
+      const { id } = userAgent;
+
+      const token = authMiddleware.generateToken(id, is_admin);
       return res.status(201).json({
         status: 'success',
         message: 'New user has been created',
         data: {
           token,
-          id: getUserID,
+          id,
           first_name,
           last_name,
           email,
@@ -45,7 +53,7 @@ class UserController {
       });
     } catch (error) {
       return res.status(500).json({
-        status: '500 Server internal error',
+        status: 'Server internal error',
         error: 'Something went wrong while trying to create a user'
       });
     }

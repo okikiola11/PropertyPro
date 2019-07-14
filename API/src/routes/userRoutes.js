@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import Validator from '../middleware/validator';
+import Validate from '../middleware/validateResult';
 import UserController from '../controller/userController';
 
 const router = Router();
@@ -7,13 +8,14 @@ const router = Router();
 router.post(
   '/signup',
   Validator.validateSignUp(),
-  Validator.getValidationResult,
+  Validate.validateResult,
   UserController.signupUser
 );
+
 router.post(
   '/signin',
-  Validator.validateSignIn(),
-  Validator.getValidationResult,
+  // Validator.validateSignIn(),
+  // Validator.validateResult,
   UserController.signinUser
 );
 
