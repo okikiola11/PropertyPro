@@ -204,8 +204,8 @@ function () {
                     var propertyId = _ref.id;
                     return propertyId === owner;
                   }),
-                      ownerEmail = _userData$find.email,
-                      ownerPhoneNumber = _userData$find.phoneNumber;
+                      owner_email = _userData$find.email,
+                      owner_phone_number = _userData$find.phone_number;
 
                   return {
                     id: id,
@@ -217,8 +217,8 @@ function () {
                     type: type,
                     created_on: created_on,
                     image_url: image_url,
-                    ownerEmail: ownerEmail,
-                    ownerPhoneNumber: ownerPhoneNumber
+                    owner_email: owner_email,
+                    owner_phone_number: owner_phone_number
                   };
                 });
                 return _context3.abrupt("return", res.status(200).send({
@@ -255,7 +255,7 @@ function () {
       var _getSingleProperty = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee4(req, res) {
-        var id, singleProperty, currentId, status, price, state, city, address, type, created_on, image_url, owner, _userData$find2, ownerEmail, ownerPhoneNumber, newProperty;
+        var id, singleProperty, currentId, status, price, state, city, address, type, created_on, image_url, owner, _userData$find2, owner_email, owner_phone_number, newProperty;
 
         return _regenerator["default"].wrap(function _callee4$(_context4) {
           while (1) {
@@ -282,7 +282,7 @@ function () {
                 _userData$find2 = _userData["default"].find(function (_ref2) {
                   var propertyId = _ref2.id;
                   return propertyId === owner;
-                }), ownerEmail = _userData$find2.email, ownerPhoneNumber = _userData$find2.phoneNumber;
+                }), owner_email = _userData$find2.email, owner_phone_number = _userData$find2.phone_number;
                 newProperty = {
                   id: currentId,
                   status: status,
@@ -293,8 +293,8 @@ function () {
                   type: type,
                   created_on: created_on,
                   image_url: image_url,
-                  ownerEmail: ownerEmail,
-                  ownerPhoneNumber: ownerPhoneNumber
+                  owner_email: owner_email,
+                  owner_phone_number: owner_phone_number
                 };
                 return _context4.abrupt("return", res.status(200).json({
                   status: 200,

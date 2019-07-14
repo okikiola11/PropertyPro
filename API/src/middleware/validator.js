@@ -39,7 +39,7 @@ class Validation {
         .withMessage('Should be a valid email address')
         .exists()
         .withMessage('Field cannot be empty'),
-      check('phoneNumber')
+      check('phone_number')
         .isNumeric()
         .withMessage('Should be only numbers')
         .exists()

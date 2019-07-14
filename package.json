@@ -4,10 +4,13 @@
   "description": "PropertyPro Lite",
   "main": "index.js",
   "scripts": {
-    "start": "node ./API/lib/index.js",
-    "dev": "nodemon --exec babel-node ./API/src/index.js",
     "build": "babel ./API/src -d ./API/lib",
-    "test": "mocha ./API/lib/test/*.test.js"
+    "dev": "nodemon --exec babel-node ./API/src/index.js",
+    "start": "node ./API/lib/index.js",
+    "start-db": "babel-node ./API/src/db/migrations.js",
+    "test": "mocha ./API/lib/test/*.test.js",
+    "test-chk": "npm run start-db && npm run build && mocha ./API/lib/test/*.test.js --timeout 30000 --exit",
+    "test-watch": "nodemon --exec  \"npm test\""
   },
   "repository": {
     "type": "git",
@@ -38,7 +41,8 @@
     "express-validator": "^6.1.1",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.1",
-    "multer-storage-cloudinary": "^2.2.1"
+    "multer-storage-cloudinary": "^2.2.1",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

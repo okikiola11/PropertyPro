@@ -36,14 +36,14 @@ function () {
       var _signupUser = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee(req, res) {
-        var _req$body, first_name, last_name, email, password, phoneNumber, address, hashedPassword, getUserID, is_admin, user, token;
+        var _req$body, first_name, last_name, email, password, phone_number, address, hashedPassword, getUserID, is_admin, user, token;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, email = _req$body.email, password = _req$body.password, phoneNumber = _req$body.phoneNumber, address = _req$body.address;
+                _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, email = _req$body.email, password = _req$body.password, phone_number = _req$body.phone_number, address = _req$body.address;
                 _context.next = 4;
                 return _helper["default"].hashPassword(password);
 
@@ -57,7 +57,7 @@ function () {
                   last_name: last_name,
                   email: email,
                   password: hashedPassword,
-                  phoneNumber: phoneNumber,
+                  phone_number: phone_number,
                   address: address,
                   is_admin: is_admin
                 };
@@ -74,7 +74,7 @@ function () {
                     first_name: first_name,
                     last_name: last_name,
                     email: email,
-                    phoneNumber: phoneNumber,
+                    phone_number: phone_number,
                     address: address
                   }
                 }));

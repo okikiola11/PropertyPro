@@ -36,7 +36,7 @@ describe('/ User Auth Signup Endpoint ', function () {
         first_name: '',
         last_name: '',
         email: '',
-        phoneNumber: '',
+        phone_number: '',
         address: '',
         password: ''
       }).expect(400).expect(function (response) {
@@ -51,13 +51,13 @@ describe('/ User Auth Signup Endpoint ', function () {
         last_name: 'Apelehin',
         email: 'user@gmail.com',
         password: 'okiki123',
-        phoneNumber: '08023182819',
+        phone_number: '08023182819',
         address: '2a, 2nd street Osborne estate Ikoyi',
         is_admin: false
       }).expect(201).expect(function (response) {
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('New user has been created');
-        expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phoneNumber', 'address');
+        expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phone_number', 'address');
       }).end(done);
     });
   });
