@@ -9,7 +9,7 @@ const createTables = async () => {
     email VARCHAR(128) UNIQUE NOT NULL,
     first_name VARCHAR(128) NOT NULL,
     last_name VARCHAR(128) NOT NULL,
-    password VARCHAR (355) NOT NULL,
+    hashed_password VARCHAR (355) NOT NULL,
     phone_number BIGINT NOT NULL,
     address VARCHAR(128) NOT NULL,
     is_admin BOOLEAN NOT NULL,
