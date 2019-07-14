@@ -49,7 +49,7 @@ function () {
     value: function validateSignUp() {
       return [(0, _expressValidator.check)('first_name', 'last_name').isAlpha().withMessage('Should be only alphabet').exists().withMessage('Field cannot be empty').isLength({
         min: 3
-      }).withMessage('Should be atleast 3 characters long').trim(), (0, _expressValidator.check)('email').isEmail().withMessage('Should be a valid email address').exists().withMessage('Field cannot be empty'), (0, _expressValidator.check)('phoneNumber').isNumeric().withMessage('Should be only numbers').exists().withMessage('Field cannot be empty').isLength({
+      }).withMessage('Should be atleast 3 characters long').trim(), (0, _expressValidator.check)('email').isEmail().withMessage('Should be a valid email address').exists().withMessage('Field cannot be empty'), (0, _expressValidator.check)('phone_number').isNumeric().withMessage('Should be only numbers').exists().withMessage('Field cannot be empty').isLength({
         min: 9,
         max: 11
       }).withMessage('Should be atleast 9-11 characters long'), (0, _expressValidator.check)('address').exists().withMessage('Field is required').not().isEmpty().withMessage('Field cannot be empty').isLength({

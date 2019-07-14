@@ -11,7 +11,7 @@ class UserController {
         last_name,
         email,
         password,
-        phoneNumber,
+        phone_number,
         address
       } = req.body;
       const hashedPassword = await helper.hashPassword(password);
@@ -24,7 +24,7 @@ class UserController {
         last_name,
         email,
         password: hashedPassword,
-        phoneNumber,
+        phone_number,
         address,
         is_admin
       };
@@ -39,7 +39,7 @@ class UserController {
           first_name,
           last_name,
           email,
-          phoneNumber,
+          phone_number,
           address
         }
       });

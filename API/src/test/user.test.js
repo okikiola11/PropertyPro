@@ -53,7 +53,7 @@ describe('/ User Auth Signup Endpoint ', () => {
           first_name: '',
           last_name: '',
           email: '',
-          phoneNumber: '',
+          phone_number: '',
           address: '',
           password: ''
         })
@@ -77,7 +77,7 @@ describe('/ User Auth Signup Endpoint ', () => {
           last_name: 'Apelehin',
           email: 'user@gmail.com',
           password: 'okiki123',
-          phoneNumber: '08023182819',
+          phone_number: '08023182819',
           address: '2a, 2nd street Osborne estate Ikoyi',
           is_admin: false
         })
@@ -91,7 +91,7 @@ describe('/ User Auth Signup Endpoint ', () => {
             'first_name',
             'last_name',
             'email',
-            'phoneNumber',
+            'phone_number',
             'address'
           );
         })

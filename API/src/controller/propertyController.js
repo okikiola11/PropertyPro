@@ -110,8 +110,8 @@ class PropertyController {
           owner
         } = property;
         const {
-          email: ownerEmail,
-          phoneNumber: ownerPhoneNumber
+          email: owner_email,
+          phone_number: owner_phone_number
         } = userData.find(({ id: propertyId }) => propertyId === owner);
         return {
           id,
@@ -123,8 +123,8 @@ class PropertyController {
           type,
           created_on,
           image_url,
-          ownerEmail,
-          ownerPhoneNumber
+          owner_email,
+          owner_phone_number
         };
       });
       return res.status(200).send({
@@ -165,8 +165,8 @@ class PropertyController {
         owner
       } = singleProperty;
       const {
-        email: ownerEmail,
-        phoneNumber: ownerPhoneNumber
+        email: owner_email,
+        phone_number: owner_phone_number
       } = userData.find(({ id: propertyId }) => propertyId === owner);
       const newProperty = {
         id: currentId,
@@ -178,8 +178,8 @@ class PropertyController {
         type,
         created_on,
         image_url,
-        ownerEmail,
-        ownerPhoneNumber
+        owner_email,
+        owner_phone_number
       };
 
       return res.status(200).json({
