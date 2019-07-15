@@ -85,7 +85,6 @@ class PropertyController {
         data: properties
       });
     } catch (error) {
-      console.log(error.stack);
       return res.status(404).json({
         status: 'Not found',
         error: 'No property found'
@@ -96,54 +95,36 @@ class PropertyController {
   static async getSingleProperty(req, res) {
     try {
       const id = parseInt(req.params.id, 10);
-      const singleProperty = Property.find(
-        getProperty => getProperty.id === id
-      );
-      if (!singleProperty) {
-        return res.status(404).json({
-          status: 'Not found',
-          error: 'Property Id not found'
-        });
+      const property = await Property.getSingleProperty(id);
+      if (!property) {
+        throw new Error('Property does not exist');
       }
-      const {
-        id: currentId,
-        status,
-        price,
-        state,
-        city,
-        address,
-        type,
-        created_on,
-        image_url,
-        owner
-      } = singleProperty;
-      const {
-        email: owner_email,
-        phone_number: owner_phone_number
-      } = userData.find(({ id: propertyId }) => propertyId === owner);
-      const newProperty = {
-        id: currentId,
-        status,
-        price,
-        state,
-        city,
-        address,
-        type,
-        created_on,
-        image_url,
-        owner_email,
-        owner_phone_number
-      };
-
+      const { owner } = property;
+      if (owner !== req.auth.id) {
+        throw new Error('Unauthorized');
+      }
       return res.status(200).json({
-        status: 200,
-        message: 'Property has been successfully retrieved',
-        data: newProperty
+        status: 'success',
+        message: 'Property has been retrieved successfully',
+        data: [property]
       });
     } catch (error) {
-      return res.status(404).json({
-        status: 'Not found',
-        error: 'Property does not exist'
+      console.log(error.stack);
+      if (error.message === 'Property does not exist') {
+        return res.status(404).json({
+          status: 'Not found',
+          error: 'Property does not exist'
+        });
+      }
+      if (error.message === 'Unauthorized') {
+        return res.status(403).json({
+          status: 'Forbidden',
+          error: 'This property does not belong to you'
+        });
+      }
+      return res.status(500).json({
+        status: 'Server internal error',
+        error: 'Something went wrong while trying to retrieve property'
       });
     }
   }
@@ -195,13 +176,6 @@ class PropertyController {
       });
     }
   }
-
-  // static async getPropertyType(req, res) {
-  //   try {
-  //     const { type } = req.query;
-  //     const id = parseInt(req.params.id, 10);
-  //   } catch (error) {}
-  // }
 
   static async deleteProperty(req, res) {
     try {

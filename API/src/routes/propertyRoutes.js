@@ -12,7 +12,11 @@ router.get(
   AuthMiddleware.verifyToken,
   PropertyController.getAllProperties
 );
-router.get('/:id', PropertyController.getSingleProperty);
+router.get(
+  '/:id',
+  AuthMiddleware.verifyToken,
+  PropertyController.getSingleProperty
+);
 router.post(
   '/',
   Validator.validatePostProperty(),
