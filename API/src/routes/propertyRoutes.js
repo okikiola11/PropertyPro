@@ -7,7 +7,11 @@ import Middleware from '../middleware/property';
 
 const router = Router();
 
-router.get('/', PropertyController.getAllProperties);
+router.get(
+  '/',
+  AuthMiddleware.verifyToken,
+  PropertyController.getAllProperties
+);
 router.get('/:id', PropertyController.getSingleProperty);
 router.post(
   '/',

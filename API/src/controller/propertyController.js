@@ -62,7 +62,6 @@ class PropertyController {
         }
       });
     } catch (error) {
-      console.log(error.stack);
       return res.status(500).json({
         status: 'internal server error',
         error: 'Something went wrong while trying to update your property'
@@ -72,45 +71,23 @@ class PropertyController {
 
   static async getAllProperties(req, res) {
     try {
-      const allProperties = Property.map(property => {
-        const {
-          id,
-          status,
-          price,
-          state,
-          city,
-          address,
-          type,
-          created_on,
-          image_url,
-          owner
-        } = property;
-        const {
-          email: owner_email,
-          phone_number: owner_phone_number
-        } = userData.find(({ id: propertyId }) => propertyId === owner);
-        return {
-          id,
-          status,
-          price,
-          state,
-          city,
-          address,
-          type,
-          created_on,
-          image_url,
-          owner_email,
-          owner_phone_number
-        };
-      });
-      return res.status(200).send({
+      const properties = await Property.getAllProperties();
+      if (properties.length === 0) {
+        return res.status(200).json({
+          status: 'success',
+          message: 'There are no existing properties',
+          data: properties
+        });
+      }
+      return res.status(200).json({
         status: 'success',
         message: 'Successfully retrieved all properties',
-        data: allProperties
+        data: properties
       });
     } catch (error) {
+      console.log(error.stack);
       return res.status(404).json({
-        status: 404,
+        status: 'Not found',
         error: 'No property found'
       });
     }
