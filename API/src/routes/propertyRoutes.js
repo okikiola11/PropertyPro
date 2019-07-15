@@ -35,6 +35,10 @@ router.patch(
 );
 router.patch('/:id/sold', PropertyController.markSoldProperty);
 
-router.delete('/:id', PropertyController.deleteProperty);
+router.delete(
+  '/:id',
+  AuthMiddleware.verifyToken,
+  PropertyController.deleteProperty
+);
 
 export default router;

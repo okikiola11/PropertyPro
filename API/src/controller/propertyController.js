@@ -180,14 +180,13 @@ class PropertyController {
   static async deleteProperty(req, res) {
     try {
       const id = parseInt(req.params.id, 10);
-      const index = Property.findIndex(deletedData => deletedData.id === id);
-      if (!index) {
+      const deletedProperty = await Property.deleteProperty(id);
+      if (!deletedProperty) {
         return res.status(404).json({
           status: 'Not found',
           error: 'Oooops! no record with such Property Id'
         });
       }
-      Property.splice(index, 1);
       return res.status(200).json({
         status: 'success',
         message: 'Property has been deleted successfully'
