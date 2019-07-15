@@ -22,6 +22,24 @@ class Properties {
 
     return rows[0];
   }
+
+  static async updateProperty(price, id) {
+    const query = `
+        UPDATE properties SET price = $1 WHERE id = $2 RETURNING *
+    `;
+    const values = [price, id];
+    const { rows } = await db.query(query, values);
+    return rows[0];
+  }
+
+  static async findPropertyId(id) {
+    const query = `
+        SELECT * FROM properties WHERE id = $1
+    `;
+    const values = [id];
+    const { rows } = await db.query(query, values);
+    return rows[0];
+  }
 }
 
 export default Properties;

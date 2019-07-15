@@ -128,6 +128,23 @@ class Validation {
         .withMessage('Must be a url')
     ];
   }
+
+  static validateUpdatePrice() {
+    return [
+      check('price')
+        .exists()
+        .withMessage('Field is Required')
+        .not()
+        .isEmpty()
+        .withMessage('Field cannot be empty')
+        .isLength({ min: 4, max: 15 })
+        .withMessage('characters should be between 4-15 long')
+        .trim()
+        .matches(/^\d+(\.|\d)\d+$/)
+        .withMessage('should be either a number or float')
+        .escape()
+    ];
+  }
 }
 
 export default Validation;
