@@ -40,6 +40,14 @@ class Properties {
     const { rows } = await db.query(query, values);
     return rows[0];
   }
+
+  static async getAllProperties() {
+    const query = `
+        SELECT * FROM properties
+    `;
+    const { rows } = await db.queryPool(query);
+    return rows;
+  }
 }
 
 export default Properties;
