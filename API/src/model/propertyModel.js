@@ -48,6 +48,16 @@ class Properties {
     const { rows } = await db.queryPool(query);
     return rows;
   }
+
+  static async getSingleProperty(id) {
+    const query = `
+        SELECT * FROM properties WHERE id = $1
+    `;
+    const values = [id];
+    const { rows } = await db.query(query, values);
+
+    return rows[0];
+  }
 }
 
 export default Properties;
