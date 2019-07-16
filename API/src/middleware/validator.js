@@ -78,10 +78,7 @@ class Validation {
         .not()
         .isEmpty()
         .withMessage('Field cannot be empty')
-        .isLength({ min: 4, max: 15 })
-        .withMessage('characters should be between 4-15 long')
-        .trim()
-        .matches(/^\d+(\.|\d)\d+$/)
+        .isNumeric()
         .withMessage('should be either a number or float')
         .escape(),
       check('state')
@@ -99,8 +96,6 @@ class Validation {
         .isAlpha()
         .withMessage('Should be Alphabets only')
         .trim()
-        .isLength({ min: 3 })
-        .withMessage('Input should be atleast 3 characters long')
         .escape(),
       check('address')
         .exists()
@@ -108,8 +103,6 @@ class Validation {
         .not()
         .isEmpty()
         .withMessage('Field cannot be empty')
-        .isLength({ min: 5 })
-        .withMessage('Input should be atleast 3 characters long')
         .trim()
         .escape(),
       check('type')
@@ -137,10 +130,7 @@ class Validation {
         .not()
         .isEmpty()
         .withMessage('Field cannot be empty')
-        .isLength({ min: 4, max: 15 })
-        .withMessage('characters should be between 4-15 long')
-        .trim()
-        .matches(/^\d+(\.|\d)\d+$/)
+        .isNumeric()
         .withMessage('should be either a number or float')
         .escape()
     ];

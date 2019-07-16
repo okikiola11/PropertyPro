@@ -8,6 +8,7 @@ const upload = multer({ storage, limits: { fileSize: 800000 } }).single(
 const uploader = (req, res, next) => {
   upload(req, res, function(err) {
     if (err instanceof multer.MulterError) {
+      console.log(err.stack);
       return res.status(400).json({
         status: 'Bad Request',
         error: 'The uploaded file size limit has been exceeded'
