@@ -4,6 +4,7 @@ import AuthMiddleware from '../middleware/authMiddleware';
 import Validator from '../middleware/validator';
 import Validate from '../middleware/validateResult';
 import Middleware from '../middleware/property';
+import uploader from '../middleware/multer';
 
 const router = Router();
 
