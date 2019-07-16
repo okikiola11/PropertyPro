@@ -5,6 +5,7 @@ class PropertyController {
   static async postProperty(req, res) {
     try {
       const { price, state, city, address, type, image_url } = req.body;
+      console.log(req.body);
       const { id } = req.auth; //get owner ID from user table
 
       const newPrice = parseFloat(price);
