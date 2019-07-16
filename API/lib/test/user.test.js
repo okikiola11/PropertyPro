@@ -65,39 +65,22 @@ describe('/ User Auth Signup Endpoint ', function () {
         console.log(response.data);
         expect(response.body.status).to.equal('Conflict');
         expect(response.body.error).to.equal('Email already exist');
-        expect(response.body.data).to.have.all.keys({
-          token: token,
-          id: id,
-          first_name: first_name,
-          last_name: last_name,
-          email: email,
-          phone_number: phone_number,
-          address: address
-        });
       }).end(done);
     });
     it('should allow a user to signup ', function (done) {
       (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signup")).set('Accept', 'application/json').send({
         first_name: 'Okikiola',
         last_name: 'Apelehin',
-        email: 'user@gmail.com',
+        email: 'something@gmail.com',
         password: 'okiki123',
         phone_number: '08023182819',
         address: '2a, 2nd street Osborne estate Ikoyi',
         is_admin: false
       }).expect(201).expect(function (response) {
-        console.log(response);
+        console.log(response.body.data);
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('New user has been created');
-        expect(response.body.data).to.have.all.keys({
-          token: token,
-          id: id,
-          first_name: first_name,
-          last_name: last_name,
-          email: email,
-          phone_number: phone_number,
-          address: address
-        });
+        expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phone_number', 'address');
       }).end(done);
     });
   });
@@ -127,7 +110,7 @@ describe('/ User Auth Signin Endpoint ', function () {
         password: 'oki'
       }).expect(401).expect(function (response) {
         expect(response.body.status).to.equal('Unauthorized');
-        expect(response.body.message).to.equal('Incorrect Password');
+        expect(response.body.error).to.equal('Incorrect Password');
       }).end(done);
     });
     it('should allow a user to signin after signing up ', function (done) {
@@ -137,7 +120,7 @@ describe('/ User Auth Signin Endpoint ', function () {
       }).expect(200).expect(function (response) {
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Welcome user@gmail.com, you have successfully logged in');
-        expect(response.body.data).to.have.all.keys('email', 'first_name', 'id', 'is_admin', 'last_name', 'token');
+        expect(response.body.data).to.have.all.keys('email', 'first_name', 'id', 'last_name', 'token');
       }).end(done);
     });
   });
