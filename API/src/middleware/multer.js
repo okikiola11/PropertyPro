@@ -18,7 +18,7 @@ const uploader = (req, res, next) => {
         error: 'Something went wrong while trying to process your request.'
       });
     }
-
+    if (req.file) req.body.image_url = req.file.image_url;
     next();
   });
 };
