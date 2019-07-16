@@ -30,19 +30,50 @@ describe('Test case for the default for the propertypro route /', function () {
   });
 });
 describe('/ User Auth Signup Endpoint ', function () {
-  describe('/ user signup - User SignUp Validation Test(Required)', function () {
-    it('user signup validation check', function (done) {
+  describe('/ user signup ', function () {
+    // it('user check signup validation ', done => {
+    //   request(app)
+    //     .post(`${API_PREFIX}/auth/signup`)
+    //     .set('Accept', 'application/json')
+    //     .send({
+    //       first_name: '',
+    //       last_name: '',
+    //       email: '',
+    //       phone_number: '',
+    //       address: '',
+    //       password: ''
+    //     })
+    //     .expect(400)
+    //     .expect(response => {
+    //       expect(response.body.status).to.equal('Bad Request');
+    //       expect(response.body.error).to.equal(
+    //         'Validation failed, check to ensure fields are properly filled'
+    //       );
+    //       expect(response.body).to.have.all.keys('status', 'error', 'errors');
+    //     })
+    //     .end(done);
+    // });
+    it('should not allow an existing email to signup', function (done) {
       (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signup")).set('Accept', 'application/json').send({
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone_number: '',
-        address: '',
-        password: ''
-      }).expect(400).expect(function (response) {
-        expect(response.body.status).to.equal('Bad Request');
-        expect(response.body.error).to.equal('Validation failed, check to ensure fields are properly filled');
-        expect(response.body).to.have.all.keys('status', 'error', 'errors');
+        first_name: 'Okikiola',
+        last_name: 'Apelehin',
+        email: 'user@gmail.com',
+        password: 'okiki123',
+        phone_number: '08023182819',
+        address: '2a, 2nd street Osborne estate Ikoyi'
+      }).expect(409).expect(function (response) {
+        console.log(response.data);
+        expect(response.body.status).to.equal('Conflict');
+        expect(response.body.error).to.equal('Email already exist');
+        expect(response.body.data).to.have.all.keys({
+          token: token,
+          id: id,
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          phone_number: phone_number,
+          address: address
+        });
       }).end(done);
     });
     it('should allow a user to signup ', function (done) {
@@ -55,19 +86,45 @@ describe('/ User Auth Signup Endpoint ', function () {
         address: '2a, 2nd street Osborne estate Ikoyi',
         is_admin: false
       }).expect(201).expect(function (response) {
+        console.log(response);
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('New user has been created');
-        expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phone_number', 'address');
+        expect(response.body.data).to.have.all.keys({
+          token: token,
+          id: id,
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          phone_number: phone_number,
+          address: address
+        });
       }).end(done);
     });
   });
 });
 describe('/ User Auth Signin Endpoint ', function () {
-  describe('/ POST user login ', function () {
+  describe('/ POST /auth/signin', function () {
+    // it('should check user login input fields', done => {
+    //   request(app)
+    //     .post(`${API_PREFIX}/auth/signin`)
+    //     .set('Accept', 'application/json')
+    //     .send({
+    //       email: '',
+    //       password: ''
+    //     })
+    //     .expect(400)
+    //     .expect(response => {
+    //       expect(response.body.status).to.equal('Bad Request');
+    //       expect(response.body.error).to.equal(
+    //         'Validation failed, check to ensure fields are properly filled'
+    //       );
+    //     })
+    //     .end(done);
+    // });
     it("POST /auth/signin - User Can't login with incorrect password", function (done) {
       (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signin")).send({
         email: 'user@gmail.com',
-        password: 'okiki111'
+        password: 'oki'
       }).expect(401).expect(function (response) {
         expect(response.body.status).to.equal('Unauthorized');
         expect(response.body.message).to.equal('Incorrect Password');
@@ -80,7 +137,7 @@ describe('/ User Auth Signin Endpoint ', function () {
       }).expect(200).expect(function (response) {
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Welcome user@gmail.com, you have successfully logged in');
-        expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'is_admin');
+        expect(response.body.data).to.have.all.keys('email', 'first_name', 'id', 'is_admin', 'last_name', 'token');
       }).end(done);
     });
   });

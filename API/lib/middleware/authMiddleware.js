@@ -38,7 +38,7 @@ function () {
     key: "verifyToken",
     value: function verifyToken(req, res, next) {
       try {
-        var token = req.headers.authorization;
+        var token = req.headers.token;
         if (!token) return res.status(401).json({
           status: 'Unauthorized',
           error: 'Token is required'

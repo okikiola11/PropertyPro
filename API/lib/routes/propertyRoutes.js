@@ -11,19 +11,25 @@ var _express = require("express");
 
 var _propertyController = _interopRequireDefault(require("../controller/propertyController"));
 
-var _multer = _interopRequireDefault(require("../middleware/multer"));
-
 var _authMiddleware = _interopRequireDefault(require("../middleware/authMiddleware"));
 
-var router = (0, _express.Router)();
-router.get('/', _propertyController["default"].getAllProperties);
-router.get('/:id', _propertyController["default"].getSingleProperty);
-router.get(':id', _propertyController["default"].getPropertyType);
-router.post('/', // Validator.validateCreateProperty(),
-// Validator.getValidationResult,
-_authMiddleware["default"].verifyToken, _multer["default"], _propertyController["default"].postProperty);
-router.patch('/:id', _authMiddleware["default"].verifyToken, _multer["default"], _propertyController["default"].updateProperty); //router.patch('/:id/sold', PropertyController.markSoldProperty);
+var _validator = _interopRequireDefault(require("../middleware/validator"));
 
-router["delete"]('/:id', _propertyController["default"].deleteProperty);
+var _validateResult = _interopRequireDefault(require("../middleware/validateResult"));
+
+var _property = _interopRequireDefault(require("../middleware/property"));
+
+var router = (0, _express.Router)();
+router.get('/', _authMiddleware["default"].verifyToken, _propertyController["default"].getAllProperties);
+router.get('/:id', _authMiddleware["default"].verifyToken, _propertyController["default"].getSingleProperty);
+router.post('/', // Validator.validatePostProperty(),
+// Validate.validateResult,
+_authMiddleware["default"].verifyToken, _propertyController["default"].postProperty);
+router.patch('/:propertyId', // Validator.validateUpdatePrice(),
+// Validate.validateResult,
+_authMiddleware["default"].verifyToken, _property["default"].findPropertyId, // uploader,
+_propertyController["default"].updateProperty);
+router.patch('/:propertyId/sold', _authMiddleware["default"].verifyToken, _property["default"].findPropertyId, _propertyController["default"].updateMarkProperty);
+router["delete"]('/:id', _authMiddleware["default"].verifyToken, _propertyController["default"].deleteProperty);
 var _default = router;
 exports["default"] = _default;
