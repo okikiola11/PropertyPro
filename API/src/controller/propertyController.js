@@ -57,6 +57,7 @@ class PropertyController {
           state,
           city,
           address,
+          price,
           created_on,
           image_url
         }
@@ -109,7 +110,6 @@ class PropertyController {
         data: [property]
       });
     } catch (error) {
-      console.log(error.stack);
       if (error.message === 'Property does not exist') {
         return res.status(404).json({
           status: 'Not found',
@@ -129,44 +129,33 @@ class PropertyController {
     }
   }
 
-  static async markSoldProperty(req, res) {
+  static async updateMarkProperty(req, res) {
     try {
-      const id = parseInt(req.params.id, 10);
-
-      const getProperty = Property.find(findPropId => findPropId.id === id);
-      if (!getProperty) {
-        return res.status(404).json({
-          status: 'Not found',
-          error: 'Oooops! no record with such Property Id'
-        });
-      }
-      const newlyCreatedPropertyDetails = {
-        id: getProperty.id,
-        status: 'sold',
-        owner: getProperty.owner,
-        type: getProperty.type,
-        state: getProperty.state,
-        city: getProperty.city,
-        address: getProperty.address,
-        price: getProperty.price,
-        created_on: getProperty.created_on,
-        image_url: getProperty.image_url
-      };
-      const indexValue = Property.findIndex(propIndex => propIndex.id === id);
-      Property.splice(indexValue, 1, newlyCreatedPropertyDetails);
+      const id = parseInt(req.params.propertyId, 10);
+      const markProperty = await Property.updateMarkProperty(id);
+      const {
+        status,
+        type,
+        state,
+        city,
+        address,
+        price,
+        created_on,
+        image_url
+      } = markProperty;
       return res.status(200).json({
         status: 'success',
-        success: 'Property has being updated successfully',
+        message: 'Property has been succesfully updated',
         data: {
           id,
-          status: 'sold',
-          type: getProperty.type,
-          state: getProperty.state,
-          city: getProperty.city,
-          address: getProperty.address,
-          price: getProperty.price,
-          created_on: getProperty.created_on,
-          image_url: getProperty.image_url
+          status,
+          type,
+          state,
+          city,
+          address,
+          price,
+          created_on,
+          image_url
         }
       });
     } catch (error) {

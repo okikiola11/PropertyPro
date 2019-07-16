@@ -59,6 +59,15 @@ class Properties {
     return rows[0];
   }
 
+  static async updateMarkProperty(id) {
+    const query = `
+        UPDATE properties SET status = $1 WHERE id = $2 RETURNING *
+    `;
+    const values = ['sold', id];
+    const { rows } = await db.query(query, values);
+    return rows[0];
+  }
+
   static async deleteProperty(id) {
     const query = `
         DELETE FROM properties WHERE id = $1 RETURNING *;

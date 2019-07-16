@@ -33,7 +33,12 @@ router.patch(
   // uploader,
   PropertyController.updateProperty
 );
-router.patch('/:id/sold', PropertyController.markSoldProperty);
+router.patch(
+  '/:propertyId/sold',
+  AuthMiddleware.verifyToken,
+  Middleware.findPropertyId,
+  PropertyController.updateMarkProperty
+);
 
 router.delete(
   '/:id',
