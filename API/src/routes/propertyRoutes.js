@@ -19,13 +19,15 @@ router.get(
 );
 router.post(
   '/',
-  // Validator.validatePostProperty(),
-  // Validate.validateResult,
+  uploader,
+  Validator.validatePostProperty(),
+  Validate.validateResult,
   AuthMiddleware.verifyToken,
   PropertyController.postProperty
 );
 router.patch(
   '/:propertyId',
+  uploader,
   // Validator.validateUpdatePrice(),
   // Validate.validateResult,
   AuthMiddleware.verifyToken,
