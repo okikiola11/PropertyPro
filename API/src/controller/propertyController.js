@@ -1,5 +1,4 @@
 import cloud from '../utils/cloudinaryConfig';
-import userData from '../utils/userData';
 import Property from '../model/propertyModel';
 
 class PropertyController {
@@ -100,14 +99,10 @@ class PropertyController {
       if (!property) {
         throw new Error('Property does not exist');
       }
-      const { owner } = property;
-      if (owner !== req.auth.id) {
-        throw new Error('Unauthorized');
-      }
       return res.status(200).json({
         status: 'success',
         message: 'Property has been retrieved successfully',
-        data: [property]
+        data: property
       });
     } catch (error) {
       if (error.message === 'Property does not exist') {

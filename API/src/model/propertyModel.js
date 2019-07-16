@@ -43,7 +43,20 @@ class Properties {
 
   static async getAllProperties() {
     const query = `
-        SELECT * FROM properties
+      SELECT properties.id,
+      properties.status,
+      properties.type,
+      properties.state,
+      properties.city,
+      properties.address,
+      properties.price,
+      properties.created_on,
+      properties.image_url,
+      users.email owner_email,
+      users.phone_number owner_phone_number
+      FROM
+      properties
+      INNER JOIN users ON users.id = properties.owner
     `;
     const { rows } = await db.queryPool(query);
     return rows;
@@ -51,11 +64,23 @@ class Properties {
 
   static async getSingleProperty(id) {
     const query = `
-        SELECT * FROM properties WHERE id = $1
+      SELECT properties.id,
+      properties.status,
+      properties.type,
+      properties.state,
+      properties.city,
+      properties.address,
+      properties.price,
+      properties.created_on,
+      properties.image_url,
+      users.email owner_email,
+      users.phone_number owner_phone_number
+      FROM
+      properties
+      INNER JOIN users ON users.id = properties.owner WHERE properties.id = $1
     `;
     const values = [id];
     const { rows } = await db.query(query, values);
-
     return rows[0];
   }
 

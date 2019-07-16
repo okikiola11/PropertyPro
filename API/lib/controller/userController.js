@@ -19,7 +19,7 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 var _helper = _interopRequireDefault(require("../utils/helper"));
 
-var _userData = _interopRequireDefault(require("../utils/userData"));
+var _userModel = _interopRequireDefault(require("../model/userModel"));
 
 var _authMiddleware = _interopRequireDefault(require("../middleware/authMiddleware"));
 
@@ -36,41 +36,49 @@ function () {
       var _signupUser = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee(req, res) {
-        var _req$body, first_name, last_name, email, password, phone_number, address, hashed_password, getUserID, is_admin, user, token;
+        var _req$body, first_name, last_name, email, password, phone_number, address, is_admin, member, hashed_password, user, id, token;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, email = _req$body.email, password = _req$body.password, phone_number = _req$body.phone_number, address = _req$body.address;
+                _req$body = req.body, first_name = _req$body.first_name, last_name = _req$body.last_name, email = _req$body.email, password = _req$body.password, phone_number = _req$body.phone_number, address = _req$body.address, is_admin = _req$body.is_admin;
                 _context.next = 4;
-                return _helper["default"].hashPassword(password);
+                return _userModel["default"].findByEmail(email);
 
               case 4:
+                member = _context.sent;
+
+                if (!member) {
+                  _context.next = 7;
+                  break;
+                }
+
+                return _context.abrupt("return", res.status(409).json({
+                  status: 'Conflict',
+                  error: 'Email already exist'
+                }));
+
+              case 7:
+                _context.next = 9;
+                return _helper["default"].hashPassword(password);
+
+              case 9:
                 hashed_password = _context.sent;
-                getUserID = _userData["default"][_userData["default"].length - 1].id + 1;
-                is_admin = false;
-                user = {
-                  id: getUserID,
-                  first_name: first_name,
-                  last_name: last_name,
-                  email: email,
-                  password: hashed_password,
-                  phone_number: phone_number,
-                  address: address,
-                  is_admin: is_admin
-                };
+                _context.next = 12;
+                return _userModel["default"].SaveUser(first_name, last_name, email, hashed_password, phone_number, address, is_admin || false);
 
-                _userData["default"].push(user);
-
-                token = _authMiddleware["default"].generateToken(getUserID, is_admin);
+              case 12:
+                user = _context.sent;
+                id = user.id;
+                token = _authMiddleware["default"].generateToken(id, is_admin);
                 return _context.abrupt("return", res.status(201).json({
                   status: 'success',
                   message: 'New user has been created',
                   data: {
                     token: token,
-                    id: getUserID,
+                    id: id,
                     first_name: first_name,
                     last_name: last_name,
                     email: email,
@@ -79,20 +87,20 @@ function () {
                   }
                 }));
 
-              case 13:
-                _context.prev = 13;
+              case 18:
+                _context.prev = 18;
                 _context.t0 = _context["catch"](0);
                 return _context.abrupt("return", res.status(500).json({
-                  status: '500 Server internal error',
+                  status: 'Server internal error',
                   error: 'Something went wrong while trying to create a user'
                 }));
 
-              case 16:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 13]]);
+        }, _callee, null, [[0, 18]]);
       }));
 
       function signupUser(_x, _x2) {
@@ -115,35 +123,40 @@ function () {
               case 0:
                 _context2.prev = 0;
                 _req$body2 = req.body, email = _req$body2.email, password = _req$body2.password;
-                user = _userData["default"].find(function (member) {
-                  return member.email === email;
-                });
+                _context2.next = 4;
+                return _userModel["default"].findByEmail(email);
+
+              case 4:
+                user = _context2.sent;
 
                 if (user) {
-                  _context2.next = 5;
+                  _context2.next = 7;
                   break;
                 }
 
-                return _context2.abrupt("return", res.status('401 Unauthorized').send('No user found.'));
-
-              case 5:
-                _context2.next = 7;
-                return _bcrypt["default"].compare(password, user.password);
+                return _context2.abrupt("return", res.status(404).json({
+                  status: 'error',
+                  error: 'User not found'
+                }));
 
               case 7:
+                _context2.next = 9;
+                return _bcrypt["default"].compare(password, user.hashed_password);
+
+              case 9:
                 passwordIsValid = _context2.sent;
 
                 if (passwordIsValid) {
-                  _context2.next = 10;
+                  _context2.next = 12;
                   break;
                 }
 
                 return _context2.abrupt("return", res.status(401).json({
                   status: 'Unauthorized',
-                  message: 'Incorrect Password'
+                  error: 'Incorrect Password'
                 }));
 
-              case 10:
+              case 12:
                 id = user.id, is_admin = user.is_admin, first_name = user.first_name, last_name = user.last_name;
                 token = _authMiddleware["default"].generateToken(id, is_admin);
                 return _context2.abrupt("return", res.status(200).json({
@@ -154,25 +167,24 @@ function () {
                     id: id,
                     first_name: first_name,
                     last_name: last_name,
-                    email: email,
-                    is_admin: is_admin
+                    email: email
                   }
                 }));
 
-              case 15:
-                _context2.prev = 15;
+              case 17:
+                _context2.prev = 17;
                 _context2.t0 = _context2["catch"](0);
                 return _context2.abrupt("return", res.status(500).json({
                   status: 'Server internal error',
-                  message: 'Something went wrong while trying to process your request'
+                  error: 'Something went wrong while trying to process your request'
                 }));
 
-              case 18:
+              case 20:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 15]]);
+        }, _callee2, null, [[0, 17]]);
       }));
 
       function signinUser(_x3, _x4) {

@@ -7,15 +7,15 @@ const router = Router();
 
 router.post(
   '/signup',
-  Validator.validateSignUp(),
-  Validate.validateResult,
+  // Validator.validateSignUp(),
+  // Validate.validateResult,
   UserController.signupUser
 );
 
 router.post(
   '/signin',
-  Validator.validateSignIn(),
-  Validate.validateResult,
+  // Validator.validateSignIn(),
+  // Validate.validateResult,
   UserController.signinUser
 );
 
