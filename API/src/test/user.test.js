@@ -81,18 +81,8 @@ describe('/ User Auth Signup Endpoint ', () => {
         })
         .expect(409)
         .expect(response => {
-          console.log(response.data);
           expect(response.body.status).to.equal('Conflict');
           expect(response.body.error).to.equal('Email already exist');
-          expect(response.body.data).to.have.all.keys({
-            token,
-            id,
-            first_name,
-            last_name,
-            email,
-            phone_number,
-            address
-          });
         })
         .end(done);
     });
@@ -104,7 +94,7 @@ describe('/ User Auth Signup Endpoint ', () => {
         .send({
           first_name: 'Okikiola',
           last_name: 'Apelehin',
-          email: 'user@gmail.com',
+          email: 'something@gmail.com',
           password: 'okiki123',
           phone_number: '08023182819',
           address: '2a, 2nd street Osborne estate Ikoyi',
@@ -112,18 +102,17 @@ describe('/ User Auth Signup Endpoint ', () => {
         })
         .expect(201)
         .expect(response => {
-          console.log(response);
           expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal('New user has been created');
-          expect(response.body.data).to.have.all.keys({
-            token,
-            id,
-            first_name,
-            last_name,
-            email,
-            phone_number,
-            address
-          });
+          expect(response.body.data).to.have.all.keys(
+            'token',
+            'id',
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'address'
+          );
         })
         .end(done);
     });
@@ -160,7 +149,7 @@ describe('/ User Auth Signin Endpoint ', () => {
         .expect(401)
         .expect(response => {
           expect(response.body.status).to.equal('Unauthorized');
-          expect(response.body.message).to.equal('Incorrect Password');
+          expect(response.body.error).to.equal('Incorrect Password');
         })
         .end(done);
     });
@@ -183,7 +172,6 @@ describe('/ User Auth Signin Endpoint ', () => {
             'email',
             'first_name',
             'id',
-            'is_admin',
             'last_name',
             'token'
           );
