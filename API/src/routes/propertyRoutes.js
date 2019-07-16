@@ -21,8 +21,8 @@ router.get(
 router.post(
   '/',
   uploader,
-  Validator.validatePostProperty(),
-  Validate.validateResult,
+  // Validator.validatePostProperty(),
+  // Validate.validateResult,
   AuthMiddleware.verifyToken,
   PropertyController.postProperty
 );

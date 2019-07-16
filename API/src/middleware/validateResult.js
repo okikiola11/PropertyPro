@@ -14,7 +14,7 @@ class Validate {
       });
 
       return res.status(400).json({
-        status: 'Bad Request',
+        status: 'Bad Request result check',
         error: 'Validation failed, check to ensure fields are properly filled',
         errors: errArray
       });
