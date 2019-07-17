@@ -1,7 +1,10 @@
 import chai from 'chai';
 
 import request from 'supertest';
+import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
 
+config();
 import app from '../index';
 
 const { expect } = chai;
