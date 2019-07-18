@@ -1,4 +1,6 @@
 # PROPERTYPRO LITE
+[![Build Status](https://travis-ci.org/okikiola11/PropertyPro.svg?branch=develop)](https://travis-ci.org/okikiola11/PropertyPro)
+[![Coverage Status](https://coveralls.io/repos/github/okikiola11/PropertyPro/badge.svg?branch=develop)](https://coveralls.io/github/okikiola11/PropertyPro?branch=develop)
 
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
@@ -45,4 +47,24 @@ The following tools will be needed to run this application successfully:
 
 ## SETUP
 
-## INSTALLATION INSTRUCTION
+To get started, clone this repository on your local machine using the following steps:
+
+Open your terminal and navigate to the folder you want the project to be and enter the the following commands:
+```
+$ git clone -b develop https://github.com/okikiola11/PropertyPro.git
+$ cd PropertyPro
+$ npm install
+```
+
+## Starting the dev server
+
+```
+npm run dev
+```
+
+## Running the tests
+
+```
+npm test
+```
+

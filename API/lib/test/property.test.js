@@ -37,7 +37,7 @@ describe('/ PropertyPro Endpoint ', function () {
         expect(response.body).to.have.all.keys('status', 'message', 'data');
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Property advert has been created');
-        expect(response.body.data).to.have.all.keys('id', 'price', 'state', 'city', 'address', 'type', 'image_url');
+        expect(response.body.data).to.have.all.keys('id', 'owner', 'status', 'price', 'state', 'city', 'address', 'type', 'image_url', 'created_on');
       }).end(done);
     }); // it('should create user accounts validation check', done => {
     //   request(app)
@@ -67,18 +67,17 @@ describe('/ PropertyPro Endpoint ', function () {
   describe('/ GET all property ', function () {
     it('should get all property adverts ', function (done) {
       (0, _supertest["default"])(_index["default"]).get("".concat(API_PREFIX, "/property")).set('Accept', 'application/json').set('token', "".concat(token)).expect(200).expect(function (response) {
-        expect(response.body).to.have.all.keys('status', 'message', 'data');
-        expect(response.body.status).to.equal(200);
+        expect(response.body).to.have.all.keys('status', 'message');
+        expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('There are no existing properties');
-        expect(response.body.data[0]).to.have.all.keys('id', 'price', 'state', 'city', 'address', 'type', 'image_url');
       }).end(done);
     });
     it('should get all properties ', function (done) {
-      (0, _supertest["default"])(_index["default"]).get("".concat(API_PREFIX, "/property")).set('Accept', 'application/json').set('token', "".concat(token)).expect(200).expect(function (response) {
+      (0, _supertest["default"])(_index["default"]).get("".concat(API_PREFIX, "/property")).set('Accept', 'application/json').expect(200).expect(function (response) {
         expect(response.body).to.have.all.keys('status', 'message', 'data');
-        expect(response.body.status).to.equal(200);
+        expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Successfully retrieved all properties');
-        expect(response.body.data[0]).to.have.all.keys('id', 'price', 'state', 'city', 'address', 'type', 'image_url');
+        expect(response.body.data[0]).to.have.all.keys('id', 'status', 'type', 'state', 'city', 'address', 'price', 'created_on', 'image_url', 'owner_email', 'owner_phone_number');
       }).end(done);
     });
     it('should get a not found if the property does not exist ', function (done) {
@@ -96,7 +95,7 @@ describe('/ PropertyPro Endpoint ', function () {
         price: '850000'
       }).expect(200).expect(function (response) {
         expect(response.body).to.have.all.keys('status', 'message', 'data');
-        expect(response.body.status).to.equal(200);
+        expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Property has been succesfully updated');
         expect(response.body.data[0]).to.have.all.keys('id', 'status', 'type', 'state', 'city', 'address', 'price', 'created_on', 'image_url');
       }).end(done);
@@ -119,7 +118,7 @@ describe('/ PropertyPro Endpoint ', function () {
     it('should return an error message if property was not found ', function (done) {
       (0, _supertest["default"])(_index["default"])["delete"]("".concat(API_PREFIX, "/property/2")).set('Accept', 'application/json').set('token', "".concat(token)).expect(404).expect(function (response) {
         expect(response.body).to.eql({
-          status: 404,
+          status: 'Not found',
           error: 'Oooops! no record with such Property Id'
         }).to.have.all.keys('status', 'error');
       }).end(done);
@@ -127,7 +126,7 @@ describe('/ PropertyPro Endpoint ', function () {
     it('should delete a property advert ', function (done) {
       (0, _supertest["default"])(_index["default"])["delete"]("".concat(API_PREFIX, "/property/2")).set('Accept', 'application/json').set('token', "".concat(token)).expect(200).expect(function (response) {
         expect(response.body).to.have.all.keys('status', 'message');
-        expect(response.body.status).to.equal(200);
+        expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('Property has been deleted successfully');
       }).end(done);
     });
