@@ -62,7 +62,6 @@ describe('/ User Auth Signup Endpoint ', function () {
         phone_number: '08023182819',
         address: '2a, 2nd street Osborne estate Ikoyi'
       }).expect(409).expect(function (response) {
-        console.log(response.data);
         expect(response.body.status).to.equal('Conflict');
         expect(response.body.error).to.equal('Email already exist');
       }).end(done);
@@ -77,7 +76,6 @@ describe('/ User Auth Signup Endpoint ', function () {
         address: '2a, 2nd street Osborne estate Ikoyi',
         is_admin: false
       }).expect(201).expect(function (response) {
-        console.log(response.body.data);
         expect(response.body.status).to.equal('success');
         expect(response.body.message).to.equal('New user has been created');
         expect(response.body.data).to.have.all.keys('token', 'id', 'first_name', 'last_name', 'email', 'phone_number', 'address');
