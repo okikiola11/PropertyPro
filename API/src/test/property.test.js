@@ -39,12 +39,15 @@ describe('/ PropertyPro Endpoint ', () => {
           );
           expect(response.body.data).to.have.all.keys(
             'id',
+            'owner',
+            'status',
             'price',
             'state',
             'city',
             'address',
             'type',
-            'image_url'
+            'image_url',
+            'created_on'
           );
         })
         .end(done);
@@ -85,18 +88,22 @@ describe('/ PropertyPro Endpoint ', () => {
         .expect(200)
         .expect(response => {
           expect(response.body).to.have.all.keys('status', 'message', 'data');
-          expect(response.body.status).to.equal(200);
+          expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal(
             'There are no existing properties'
           );
           expect(response.body.data[0]).to.have.all.keys(
             'id',
-            'price',
+            'status',
+            'type',
             'state',
             'city',
             'address',
-            'type',
-            'image_url'
+            'price',
+            'created_on',
+            'image_url',
+            'owner_email',
+            'owner_phone_number'
           );
         })
         .end(done);
@@ -106,22 +113,25 @@ describe('/ PropertyPro Endpoint ', () => {
       request(app)
         .get(`${API_PREFIX}/property`)
         .set('Accept', 'application/json')
-        .set('token', `${token}`)
         .expect(200)
         .expect(response => {
           expect(response.body).to.have.all.keys('status', 'message', 'data');
-          expect(response.body.status).to.equal(200);
+          expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal(
             'Successfully retrieved all properties'
           );
           expect(response.body.data[0]).to.have.all.keys(
             'id',
-            'price',
+            'status',
+            'type',
             'state',
             'city',
             'address',
-            'type',
-            'image_url'
+            'price',
+            'created_on',
+            'image_url',
+            'owner_email',
+            'owner_phone_number'
           );
         })
         .end(done);
@@ -156,7 +166,7 @@ describe('/ PropertyPro Endpoint ', () => {
         .expect(200)
         .expect(response => {
           expect(response.body).to.have.all.keys('status', 'message', 'data');
-          expect(response.body.status).to.equal(200);
+          expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal(
             'Property has been succesfully updated'
           );
@@ -201,7 +211,7 @@ describe('/ PropertyPro Endpoint ', () => {
         .expect(response => {
           expect(response.body)
             .to.eql({
-              status: 404,
+              status: 'Not found',
               error: 'Oooops! no record with such Property Id'
             })
             .to.have.all.keys('status', 'error');
@@ -217,7 +227,7 @@ describe('/ PropertyPro Endpoint ', () => {
         .expect(200)
         .expect(response => {
           expect(response.body).to.have.all.keys('status', 'message');
-          expect(response.body.status).to.equal(200);
+          expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal(
             'Property has been deleted successfully'
           );

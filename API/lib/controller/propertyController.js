@@ -159,8 +159,7 @@ function () {
 
                 return _context3.abrupt("return", res.status(200).json({
                   status: 'success',
-                  message: 'There are no existing properties',
-                  data: properties
+                  message: 'There are no existing properties'
                 }));
 
               case 6:
