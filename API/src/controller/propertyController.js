@@ -7,6 +7,8 @@ class PropertyController {
       const { price, state, city, address, type, image_url } = req.body;
       const { id } = req.auth; //get owner ID from user table
 
+      const { url: image_url } = req.file;
+
       const newPrice = parseFloat(price);
       const newProperty = await Property.SaveProperty(
         id,
@@ -75,8 +77,7 @@ class PropertyController {
       if (properties.length === 0) {
         return res.status(200).json({
           status: 'success',
-          message: 'There are no existing properties',
-          data: properties
+          message: 'There are no existing properties'
         });
       }
       return res.status(200).json({
