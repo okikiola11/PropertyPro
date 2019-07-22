@@ -31,28 +31,20 @@ describe('Test case for the default for the propertypro route /', function () {
 });
 describe('/ User Auth Signup Endpoint ', function () {
   describe('/ user signup ', function () {
-    // it('user check signup validation ', done => {
-    //   request(app)
-    //     .post(`${API_PREFIX}/auth/signup`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       first_name: '',
-    //       last_name: '',
-    //       email: '',
-    //       phone_number: '',
-    //       address: '',
-    //       password: ''
-    //     })
-    //     .expect(400)
-    //     .expect(response => {
-    //       expect(response.body.status).to.equal('Bad Request');
-    //       expect(response.body.error).to.equal(
-    //         'Validation failed, check to ensure fields are properly filled'
-    //       );
-    //       expect(response.body).to.have.all.keys('status', 'error', 'errors');
-    //     })
-    //     .end(done);
-    // });
+    it('user check signup validation ', function (done) {
+      (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signup")).set('Accept', 'application/json').send({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone_number: '',
+        address: '',
+        password: ''
+      }).expect(400).expect(function (response) {
+        expect(response.body.status).to.equal('Bad Request');
+        expect(response.body.error).to.equal('Validation failed, check to ensure fields are properly filled');
+        expect(response.body).to.have.all.keys('status', 'error', 'errors');
+      }).end(done);
+    });
     it('should not allow an existing email to signup', function (done) {
       (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signup")).set('Accept', 'application/json').send({
         first_name: 'Okikiola',
@@ -85,27 +77,19 @@ describe('/ User Auth Signup Endpoint ', function () {
 });
 describe('/ User Auth Signin Endpoint ', function () {
   describe('/ POST /auth/signin', function () {
-    // it('should check user login input fields', done => {
-    //   request(app)
-    //     .post(`${API_PREFIX}/auth/signin`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       email: '',
-    //       password: ''
-    //     })
-    //     .expect(400)
-    //     .expect(response => {
-    //       expect(response.body.status).to.equal('Bad Request');
-    //       expect(response.body.error).to.equal(
-    //         'Validation failed, check to ensure fields are properly filled'
-    //       );
-    //     })
-    //     .end(done);
-    // });
+    it('should check user login input fields', function (done) {
+      (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signin")).set('Accept', 'application/json').send({
+        email: '',
+        password: ''
+      }).expect(400).expect(function (response) {
+        expect(response.body.status).to.equal('Bad Request');
+        expect(response.body.error).to.equal('Validation failed, check to ensure fields are properly filled');
+      }).end(done);
+    });
     it("POST /auth/signin - User Can't login with incorrect password", function (done) {
       (0, _supertest["default"])(_index["default"]).post("".concat(API_PREFIX, "/auth/signin")).send({
         email: 'user@gmail.com',
-        password: 'oki'
+        password: 'okiiolhghjjjj'
       }).expect(401).expect(function (response) {
         expect(response.body.status).to.equal('Unauthorized');
         expect(response.body.error).to.equal('Incorrect Password');

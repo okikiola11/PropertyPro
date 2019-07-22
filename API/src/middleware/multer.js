@@ -2,7 +2,7 @@ import multer from 'multer';
 import storage from '../utils/cloudinaryConfig';
 
 const upload = multer({ storage, limits: { fileSize: 800000 } }).single(
-  'image'
+  'image_url'
 );
 
 const uploader = (req, res, next) => {

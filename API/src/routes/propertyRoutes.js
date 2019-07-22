@@ -4,6 +4,7 @@ import AuthMiddleware from '../middleware/authMiddleware';
 import Validator from '../middleware/validator';
 import Validate from '../middleware/validateResult';
 import Middleware from '../middleware/property';
+import uploader from '../middleware/multer';
 
 const router = Router();
 
@@ -19,15 +20,16 @@ router.get(
 );
 router.post(
   '/',
-  // Validator.validatePostProperty(),
-  // Validate.validateResult,
+  Validator.validatePostProperty(),
+  Validate.validateResult,
   AuthMiddleware.verifyToken,
+  uploader,
   PropertyController.postProperty
 );
 router.patch(
   '/:propertyId',
-  // Validator.validateUpdatePrice(),
-  // Validate.validateResult,
+  Validator.validateUpdatePrice(),
+  Validate.validateResult,
   AuthMiddleware.verifyToken,
   Middleware.findPropertyId,
   // uploader,

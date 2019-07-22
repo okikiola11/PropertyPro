@@ -124,8 +124,6 @@ class Validation {
         .not()
         .isEmpty()
         .withMessage('Field cannot be empty')
-        .isURL()
-        .withMessage('Must be a url')
     ];
   }
 

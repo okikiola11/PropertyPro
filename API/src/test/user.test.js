@@ -45,28 +45,28 @@ describe('Test case for the default for the propertypro route /', () => {
 
 describe('/ User Auth Signup Endpoint ', () => {
   describe('/ user signup ', () => {
-    // it('user check signup validation ', done => {
-    //   request(app)
-    //     .post(`${API_PREFIX}/auth/signup`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       first_name: '',
-    //       last_name: '',
-    //       email: '',
-    //       phone_number: '',
-    //       address: '',
-    //       password: ''
-    //     })
-    //     .expect(400)
-    //     .expect(response => {
-    //       expect(response.body.status).to.equal('Bad Request');
-    //       expect(response.body.error).to.equal(
-    //         'Validation failed, check to ensure fields are properly filled'
-    //       );
-    //       expect(response.body).to.have.all.keys('status', 'error', 'errors');
-    //     })
-    //     .end(done);
-    // });
+    it('user check signup validation ', done => {
+      request(app)
+        .post(`${API_PREFIX}/auth/signup`)
+        .set('Accept', 'application/json')
+        .send({
+          first_name: '',
+          last_name: '',
+          email: '',
+          phone_number: '',
+          address: '',
+          password: ''
+        })
+        .expect(400)
+        .expect(response => {
+          expect(response.body.status).to.equal('Bad Request');
+          expect(response.body.error).to.equal(
+            'Validation failed, check to ensure fields are properly filled'
+          );
+          expect(response.body).to.have.all.keys('status', 'error', 'errors');
+        })
+        .end(done);
+    });
     it('should not allow an existing email to signup', done => {
       request(app)
         .post(`${API_PREFIX}/auth/signup`)
@@ -121,30 +121,30 @@ describe('/ User Auth Signup Endpoint ', () => {
 
 describe('/ User Auth Signin Endpoint ', () => {
   describe('/ POST /auth/signin', () => {
-    // it('should check user login input fields', done => {
-    //   request(app)
-    //     .post(`${API_PREFIX}/auth/signin`)
-    //     .set('Accept', 'application/json')
-    //     .send({
-    //       email: '',
-    //       password: ''
-    //     })
-    //     .expect(400)
-    //     .expect(response => {
-    //       expect(response.body.status).to.equal('Bad Request');
-    //       expect(response.body.error).to.equal(
-    //         'Validation failed, check to ensure fields are properly filled'
-    //       );
-    //     })
-    //     .end(done);
-    // });
+    it('should check user login input fields', done => {
+      request(app)
+        .post(`${API_PREFIX}/auth/signin`)
+        .set('Accept', 'application/json')
+        .send({
+          email: '',
+          password: ''
+        })
+        .expect(400)
+        .expect(response => {
+          expect(response.body.status).to.equal('Bad Request');
+          expect(response.body.error).to.equal(
+            'Validation failed, check to ensure fields are properly filled'
+          );
+        })
+        .end(done);
+    });
 
     it("POST /auth/signin - User Can't login with incorrect password", done => {
       request(app)
         .post(`${API_PREFIX}/auth/signin`)
         .send({
           email: 'user@gmail.com',
-          password: 'oki'
+          password: 'okiiolhghjjjj'
         })
         .expect(401)
         .expect(response => {

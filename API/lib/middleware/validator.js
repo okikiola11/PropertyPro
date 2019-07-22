@@ -55,7 +55,7 @@ function () {
         min: 3
       }).withMessage('Input should be atleast 3 characters long').escape(), (0, _expressValidator.check)('address').exists().withMessage('Field is Required').not().isEmpty().withMessage('Field cannot be empty').isLength({
         min: 5
-      }).withMessage('Input should be atleast 3 characters long').trim().escape(), (0, _expressValidator.check)('type').exists().withMessage('Field is Required').not().isEmpty().withMessage('Field cannot be empty'), (0, _expressValidator.check)('image_url').exists().withMessage('Field is Required').not().isEmpty().withMessage('Field cannot be empty').isURL().withMessage('Must be a url')];
+      }).withMessage('Input should be atleast 3 characters long').trim().escape(), (0, _expressValidator.check)('type').exists().withMessage('Field is Required').not().isEmpty().withMessage('Field cannot be empty'), (0, _expressValidator.check)('image_url').exists().withMessage('Field is Required').not().isEmpty().withMessage('Field cannot be empty')];
     }
   }, {
     key: "validateUpdatePrice",
