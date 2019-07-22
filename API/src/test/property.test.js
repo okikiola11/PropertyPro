@@ -80,30 +80,17 @@ describe('/ PropertyPro Endpoint ', () => {
   });
 
   describe('/ GET all property ', () => {
-    it('should get all property adverts ', done => {
+    it('should return success mssg if there are no properties ', done => {
       request(app)
         .get(`${API_PREFIX}/property`)
         .set('Accept', 'application/json')
         .set('token', `${token}`)
         .expect(200)
         .expect(response => {
-          expect(response.body).to.have.all.keys('status', 'message', 'data');
+          expect(response.body).to.have.all.keys('status', 'message');
           expect(response.body.status).to.equal('success');
           expect(response.body.message).to.equal(
             'There are no existing properties'
-          );
-          expect(response.body.data[0]).to.have.all.keys(
-            'id',
-            'status',
-            'type',
-            'state',
-            'city',
-            'address',
-            'price',
-            'created_on',
-            'image_url',
-            'owner_email',
-            'owner_phone_number'
           );
         })
         .end(done);
@@ -113,6 +100,7 @@ describe('/ PropertyPro Endpoint ', () => {
       request(app)
         .get(`${API_PREFIX}/property`)
         .set('Accept', 'application/json')
+        .set('token', `${token}`)
         .expect(200)
         .expect(response => {
           expect(response.body).to.have.all.keys('status', 'message', 'data');
@@ -122,23 +110,23 @@ describe('/ PropertyPro Endpoint ', () => {
           );
           expect(response.body.data[0]).to.have.all.keys(
             'id',
-            'status',
-            'type',
-            'state',
-            'city',
             'address',
-            'price',
+            'city',
             'created_on',
             'image_url',
             'owner_email',
-            'owner_phone_number'
+            'owner_phone_number',
+            'price',
+            'state',
+            'status',
+            'type'
           );
         })
         .end(done);
     });
     it('should get a not found if the property does not exist ', done => {
       request(app)
-        .get(`${API_PREFIX}/property/`)
+        .get(`${API_PREFIX}/property`)
         .set('Accept', 'application/json')
         .set('token', `${token}`)
         .expect(404)
@@ -154,10 +142,107 @@ describe('/ PropertyPro Endpoint ', () => {
     });
   });
 
+  describe('/ GET a specific property ', () => {
+    it('should get specific property, if propertyId exist', done => {
+      request(app)
+        .get(`${API_PREFIX}/property/1`)
+        .set('Accept', 'application/json')
+        .set('token', `${token}`)
+        .expect(200)
+        .expect(response => {
+          expect(response.body).to.have.all.keys('status', 'message', 'data');
+          expect(response.body.status).to.equal('success');
+          expect(response.body.message).to.equal(
+            'Property has been retrieved successfully'
+          );
+          expect(response.body.data).to.have.all.keys(
+            'id',
+            'status',
+            'type',
+            'state',
+            'city',
+            'address',
+            'price',
+            'created_on',
+            'image_url',
+            'owner_email',
+            'owner_phone_number'
+          );
+        })
+        .end(done);
+    });
+
+    it('should return not found if property does not exist ', done => {
+      request(app)
+        .get(`${API_PREFIX}/property/22`)
+        .set('Accept', 'application/json')
+        .set('token', `${token}`)
+        .expect(404)
+        .expect(response => {
+          expect(response.body).to.have.all.keys('status', 'error');
+          expect(response.body.status).to.equal('Not found');
+          expect(response.body.error).to.equal('Property does not exist');
+        })
+        .end(done);
+    });
+    it('should return forbidden if property does not belong you', done => {
+      request(app)
+        .get(`${API_PREFIX}/property/4`)
+        .set('Accept', 'application/json')
+        .set('token', `${token}`)
+        .expect(403)
+        .expect(response => {
+          expect(response.body)
+            .to.eql({
+              status: 'Forbidden',
+              error: 'This property does not belong to you'
+            })
+            .to.have.all.keys('status', 'error');
+        })
+        .end(done);
+    });
+  });
+
   describe('/ UPDATE property ', () => {
+    it('should return error if property does not exist', done => {
+      request(app)
+        .patch(`${API_PREFIX}/property/1`)
+        .set('Accept', 'application/json')
+        .set('token', `${token}`)
+        .send({
+          price: '850000'
+        })
+        .expect(404)
+        .expect(response => {
+          console.log(response.body);
+          expect(response.body).to.have.all.keys('status', 'error');
+          expect(response.body.status).to.equal('Not found');
+          expect(response.body.error).to.equal('No property found');
+        })
+        .end(done);
+    });
+    it('should return error if ownerId does not tally with signed in user Id', done => {
+      request(app)
+        .patch(`${API_PREFIX}/property/1`)
+        .set('Accept', 'application/json')
+        .set('token', `${token}`)
+        .send({
+          price: '850000'
+        })
+        .expect(401)
+        .expect(response => {
+          expect(response.body).to.have.all.keys('status', 'error');
+          expect(response.body.status).to.equal('Unauthorized');
+          expect(response.body.error).to.equal(
+            'This property does not belong to you'
+          );
+        })
+        .end(done);
+    });
+
     it('should send an error message if property is not found ', done => {
       request(app)
-        .patch(`${API_PREFIX}/property/2`)
+        .patch(`${API_PREFIX}/property/1`)
         .set('Accept', 'application/json')
         .set('token', `${token}`)
         .send({
@@ -204,7 +289,7 @@ describe('/ PropertyPro Endpoint ', () => {
   describe('/ DELETE property ', () => {
     it('should return an error message if property was not found ', done => {
       request(app)
-        .delete(`${API_PREFIX}/property/2`)
+        .delete(`${API_PREFIX}/property/4`)
         .set('Accept', 'application/json')
         .set('token', `${token}`)
         .expect(404)
@@ -221,7 +306,7 @@ describe('/ PropertyPro Endpoint ', () => {
 
     it('should delete a property advert ', done => {
       request(app)
-        .delete(`${API_PREFIX}/property/2`)
+        .delete(`${API_PREFIX}/property/1`)
         .set('Accept', 'application/json')
         .set('token', `${token}`)
         .expect(200)
