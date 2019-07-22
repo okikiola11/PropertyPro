@@ -7,7 +7,7 @@ class PropertyController {
       const { price, state, city, address, type, image_url } = req.body;
       const { id } = req.auth; //get owner ID from user table
 
-      const { url: image_url } = req.file;
+      const imageUrl = image_url || req.file.url;
 
       const newPrice = parseFloat(price);
       const newProperty = await Property.SaveProperty(
@@ -17,7 +17,7 @@ class PropertyController {
         city,
         address,
         type,
-        image_url
+        imageUrl
       );
 
       return res.status(201).json({
@@ -77,7 +77,8 @@ class PropertyController {
       if (properties.length === 0) {
         return res.status(200).json({
           status: 'success',
-          message: 'There are no existing properties'
+          message: 'There are no existing properties',
+          data: []
         });
       }
       return res.status(200).json({
@@ -86,9 +87,9 @@ class PropertyController {
         data: properties
       });
     } catch (error) {
-      return res.status(404).json({
-        status: 'Not found',
-        error: 'No property found'
+      return res.status(500).json({
+        status: 'Server internal error',
+        error: 'Something went wrong while trying to retrieve data'
       });
     }
   }

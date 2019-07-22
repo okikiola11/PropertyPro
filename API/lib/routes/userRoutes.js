@@ -16,11 +16,7 @@ var _validateResult = _interopRequireDefault(require("../middleware/validateResu
 var _userController = _interopRequireDefault(require("../controller/userController"));
 
 var router = (0, _express.Router)();
-router.post('/signup', // Validator.validateSignUp(),
-// Validate.validateResult,
-_userController["default"].signupUser);
-router.post('/signin', // Validator.validateSignIn(),
-// Validate.validateResult,
-_userController["default"].signinUser);
+router.post('/signup', _validator["default"].validateSignUp(), _validateResult["default"].validateResult, _userController["default"].signupUser);
+router.post('/signin', _validator["default"].validateSignIn(), _validateResult["default"].validateResult, _userController["default"].signinUser);
 var _default = router;
 exports["default"] = _default;

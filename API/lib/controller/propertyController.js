@@ -32,7 +32,7 @@ function () {
       var _postProperty = (0, _asyncToGenerator2["default"])(
       /*#__PURE__*/
       _regenerator["default"].mark(function _callee(req, res) {
-        var _req$body, price, state, city, address, type, image_url, id, newPrice, newProperty;
+        var _req$body, price, state, city, address, type, image_url, id, imageUrl, newPrice, newProperty;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
@@ -42,11 +42,12 @@ function () {
                 _req$body = req.body, price = _req$body.price, state = _req$body.state, city = _req$body.city, address = _req$body.address, type = _req$body.type, image_url = _req$body.image_url;
                 id = req.auth.id; //get owner ID from user table
 
+                imageUrl = image_url || req.file.url;
                 newPrice = parseFloat(price);
-                _context.next = 6;
-                return _propertyModel["default"].SaveProperty(id, price, state, city, address, type, image_url);
+                _context.next = 7;
+                return _propertyModel["default"].SaveProperty(id, price, state, city, address, type, imageUrl);
 
-              case 6:
+              case 7:
                 newProperty = _context.sent;
                 return _context.abrupt("return", res.status(201).json({
                   status: 'success',
@@ -54,20 +55,20 @@ function () {
                   data: newProperty
                 }));
 
-              case 10:
-                _context.prev = 10;
+              case 11:
+                _context.prev = 11;
                 _context.t0 = _context["catch"](0);
                 return _context.abrupt("return", res.status(500).json({
                   status: 'Server internal error',
                   error: 'Something went wrong while trying to create a property advert'
                 }));
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 11]]);
       }));
 
       function postProperty(_x, _x2) {
@@ -159,7 +160,8 @@ function () {
 
                 return _context3.abrupt("return", res.status(200).json({
                   status: 'success',
-                  message: 'There are no existing properties'
+                  message: 'There are no existing properties',
+                  data: []
                 }));
 
               case 6:
@@ -172,9 +174,9 @@ function () {
               case 9:
                 _context3.prev = 9;
                 _context3.t0 = _context3["catch"](0);
-                return _context3.abrupt("return", res.status(404).json({
-                  status: 'Not found',
-                  error: 'No property found'
+                return _context3.abrupt("return", res.status(500).json({
+                  status: 'Server internal error',
+                  error: 'Something went wrong while trying to retrieve data'
                 }));
 
               case 12:

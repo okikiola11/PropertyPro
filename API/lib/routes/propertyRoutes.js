@@ -19,15 +19,13 @@ var _validateResult = _interopRequireDefault(require("../middleware/validateResu
 
 var _property = _interopRequireDefault(require("../middleware/property"));
 
+var _multer = _interopRequireDefault(require("../middleware/multer"));
+
 var router = (0, _express.Router)();
 router.get('/', _authMiddleware["default"].verifyToken, _propertyController["default"].getAllProperties);
 router.get('/:id', _authMiddleware["default"].verifyToken, _propertyController["default"].getSingleProperty);
-router.post('/', // Validator.validatePostProperty(),
-// Validate.validateResult,
-_authMiddleware["default"].verifyToken, _propertyController["default"].postProperty);
-router.patch('/:propertyId', // Validator.validateUpdatePrice(),
-// Validate.validateResult,
-_authMiddleware["default"].verifyToken, _property["default"].findPropertyId, // uploader,
+router.post('/', _validator["default"].validatePostProperty(), _validateResult["default"].validateResult, _authMiddleware["default"].verifyToken, _multer["default"], _propertyController["default"].postProperty);
+router.patch('/:propertyId', _validator["default"].validateUpdatePrice(), _validateResult["default"].validateResult, _authMiddleware["default"].verifyToken, _property["default"].findPropertyId, // uploader,
 _propertyController["default"].updateProperty);
 router.patch('/:propertyId/sold', _authMiddleware["default"].verifyToken, _property["default"].findPropertyId, _propertyController["default"].updateMarkProperty);
 router["delete"]('/:id', _authMiddleware["default"].verifyToken, _propertyController["default"].deleteProperty);

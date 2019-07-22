@@ -16,7 +16,7 @@ var upload = (0, _multer["default"])({
   limits: {
     fileSize: 800000
   }
-}).single('image');
+}).single('image_url');
 
 var uploader = function uploader(req, res, next) {
   upload(req, res, function (err) {
